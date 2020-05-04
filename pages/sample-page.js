@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/layout'
 
 export default function SamplePage() {
   return (
-    <div className="container">
+    <Layout>
       <Head>
         <title>Sample page</title>
       </Head>
@@ -12,12 +13,7 @@ export default function SamplePage() {
       <p>hey hey</p>
       <Link href="/"><a>back to top</a></Link>
 
-      <style jsx>{`
-        .container {
-          width: 80%;
-          margin: auto;
-        }
-      `}</style>
-    </div>
+      <style jsx>{``}</style>
+    </Layout>
   )
 }
