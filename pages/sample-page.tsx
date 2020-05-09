@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Layout from '../components/layout'
 import { getIp } from '../lib/httpbin'
 
-export default function SamplePage({ ip }) {
+export default function SamplePage({ ip }: { ip: string }) {
   return (
     <Layout>
       <Head>
