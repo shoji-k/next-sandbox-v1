@@ -1,8 +1,11 @@
 import fetch from 'node-fetch'
 
-export async function getIp() {
+type Response = {
+  origin: string;
+}
+
+export async function getIp(): Promise<Response> {
   const url = 'https://httpbin.org/ip'
   const res = await fetch(url)
-  console.log(res)
   return res.json()
 }
