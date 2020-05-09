@@ -1,7 +1,8 @@
+import React, { ReactElement } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function Home() {
+export default function Home(): ReactElement {
   return (
     <div className="container">
       <Head>
