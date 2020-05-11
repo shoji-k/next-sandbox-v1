@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/layout'
 import { getIp } from '../lib/httpbin'
+import Ip from '../components/ip'
 
 export default function SamplePage({ ip }: { ip: string }): ReactElement {
   return (
@@ -12,16 +13,24 @@ export default function SamplePage({ ip }: { ip: string }): ReactElement {
       </Head>
 
       <h2>sample page</h2>
-      <p>hey hey, your ip address is { ip } !</p>
-      <Link href="/"><a>back to top</a></Link>
+      <div>This page is build on { ip }!</div>
+      <Ip />
 
-      <style jsx>{``}</style>
+      <div className="back-link">
+        <Link href="/"><a>back to top</a></Link>
+      </div>
+
+      <style jsx>{`
+        .back-link {
+          margin-top: 1rem;
+        }
+      `}</style>
     </Layout>
   )
 }
 
 type IpResponse = {
-  props: {
+  props: {  
     ip: string;
   };
 }
