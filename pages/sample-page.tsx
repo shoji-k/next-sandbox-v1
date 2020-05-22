@@ -12,25 +12,23 @@ export default function SamplePage({ ip }: { ip: string }): ReactElement {
         <title>Sample page</title>
       </Head>
 
-      <h2>sample page</h2>
-      <div>This page is build on { ip }!</div>
-      <Ip />
+      <div className="bg-gray-100 p-8">
+        <h2 className="pb-6 text-2xl font-bold">sample page</h2>
+        <div>This page is build on { ip }!</div>
+        <Ip />
 
-      <div className="back-link">
-        <Link href="/"><a>back to top</a></Link>
+        <div className="pt-6 text-indigo-500">
+          <Link href="/"><a>back to top</a></Link>
+        </div>
       </div>
 
-      <style jsx>{`
-        .back-link {
-          margin-top: 1rem;
-        }
-      `}</style>
+      <style jsx>{``}</style>
     </Layout>
   )
 }
 
 type IpResponse = {
-  props: {  
+  props: {
     ip: string;
   };
 }
