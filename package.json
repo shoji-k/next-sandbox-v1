@@ -9,6 +9,7 @@
     "lint": "eslint --ext .js,.tsx,.ts ."
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "eslint-plugin-cypress": "^2.10.3",
     "next": "9.4.1",
     "react": "16.13.1",
