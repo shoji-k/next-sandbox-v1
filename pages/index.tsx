@@ -56,6 +56,15 @@ export default function Home(): ReactElement {
               </p>
             </a>
           </Link>
+
+          <Link href="/form">
+            <a className="card">
+              <h3>Form sample &rarr;</h3>
+              <p>
+                form sample
+              </p>
+            </a>
+          </Link>
         </div>
       </main>
 
