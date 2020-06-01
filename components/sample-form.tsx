@@ -8,6 +8,7 @@ export default function SampleForm(): ReactElement {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [password, setPassword] = useState('')
+  const [city, setCity] = useState('')
   const [state, selectState] = useState('')
   const [zip, setZip] = useState('')
 
@@ -46,7 +47,12 @@ export default function SampleForm(): ReactElement {
       </div>
       <div className="flex flex-wrap -mx-3 mb-2">
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-          <TextLabel id="grid-city" placeholder="Albuquerque">City</TextLabel>
+          <TextLabel
+            id="grid-city"
+            value={city}
+            setText={setCity}
+            placeholder="Albuquerque"
+          >City</TextLabel>
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <Label inputId="grid-state">State</Label>
