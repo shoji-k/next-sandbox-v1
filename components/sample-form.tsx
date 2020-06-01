@@ -1,15 +1,23 @@
-import React, { ReactElement } from "react"
+import React, { ReactElement, useState } from "react"
 import Label from "./organisms/sample-form/Label"
 import Password from "./organisms/sample-form/Password"
 import Select from "./organisms/sample-form/Select"
 import TextLabel from "./organisms/sample-form/TextLabel"
 
 export default function SampleForm(): ReactElement {
+  const [name, setName] = useState('')
+
   return (
     <form className="w-full max-w-lg mx-auto py-8">
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <TextLabel id="grid-first-name" placeholder="Jane" error="Please fill out this field.">First Name</TextLabel>
+          <TextLabel
+            id="grid-first-name"
+            placeholder="Jane"
+            error="Please fill out this field."
+            value={name}
+            setText={setName}
+          >First Name</TextLabel>
         </div>
         <div className="w-full md:w-1/2 px-3">
           <TextLabel id="grid-last-name" placeholder="Doe">Last Name</TextLabel>
