@@ -8,6 +8,7 @@ export default function SampleForm(): ReactElement {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [password, setPassword] = useState('')
+  const [state, selectState] = useState('')
   const [zip, setZip] = useState('')
 
   return (
@@ -51,7 +52,9 @@ export default function SampleForm(): ReactElement {
           <Label inputId="grid-state">State</Label>
           <Select
             id="grid-state"
-            list={['New Mexico', 'Missouri', 'Texas']}
+            value={state}
+            select={selectState}
+            list={['', 'New Mexico', 'Missouri', 'Texas']}
           />
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">

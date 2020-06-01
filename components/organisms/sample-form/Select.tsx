@@ -1,9 +1,17 @@
 import React, { ReactElement } from "react"
 
-export default function Select({ id, list }: { id: string; list: string[] }): ReactElement {
+export default function Select({ id, value, select, list }: { id: string; value: string; select: Function; list: string[] }): ReactElement {
+  const onChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    select(e.target.value)
+  }
   return (
     <div className="relative">
-      <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id={id}>
+      <select
+        className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        id={id}
+        value={value}
+        onChange={onChange}
+      >
         {list.map(v => <option key={v} value={v}>{v}</option>)}
       </select>
       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
