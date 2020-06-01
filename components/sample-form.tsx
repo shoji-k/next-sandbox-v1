@@ -5,7 +5,9 @@ import Select from "./organisms/sample-form/Select"
 import TextLabel from "./organisms/sample-form/TextLabel"
 
 export default function SampleForm(): ReactElement {
-  const [name, setName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [zip, setZip] = useState('')
 
   return (
     <form className="w-full max-w-lg mx-auto py-8">
@@ -13,14 +15,19 @@ export default function SampleForm(): ReactElement {
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <TextLabel
             id="grid-first-name"
+            value={firstName}
+            setText={setFirstName}
             placeholder="Jane"
             error="Please fill out this field."
-            value={name}
-            setText={setName}
           >First Name</TextLabel>
         </div>
         <div className="w-full md:w-1/2 px-3">
-          <TextLabel id="grid-last-name" placeholder="Doe">Last Name</TextLabel>
+          <TextLabel
+            id="grid-last-name"
+            value={lastName}
+            setText={setLastName}
+            placeholder="Doe"
+          >Last Name</TextLabel>
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
@@ -42,7 +49,12 @@ export default function SampleForm(): ReactElement {
           />
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-          <TextLabel id="grid-zip" placeholder="90210">Zip</TextLabel>
+          <TextLabel
+            id="grid-zip"
+            value={zip}
+            setText={setZip}
+            placeholder="90210"
+          >Zip</TextLabel>
         </div>
       </div>
     </form>
