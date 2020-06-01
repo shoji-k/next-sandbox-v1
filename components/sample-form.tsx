@@ -7,6 +7,7 @@ import TextLabel from "./organisms/sample-form/TextLabel"
 export default function SampleForm(): ReactElement {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [password, setPassword] = useState('')
   const [zip, setZip] = useState('')
 
   return (
@@ -33,7 +34,12 @@ export default function SampleForm(): ReactElement {
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3">
           <Label inputId="grid-password">Password</Label>
-          <Password id="grid-password" placeholder="******************" />
+          <Password
+            id="grid-password"
+            value={password}
+            setPassword={setPassword}
+            placeholder="******************"
+          />
           <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you&apos;d like</p>
         </div>
       </div>
