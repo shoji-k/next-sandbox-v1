@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react"
+import React, { ReactElement } from 'react'
 import useSWR from 'swr'
 import fetch from '../lib/fetch'
 

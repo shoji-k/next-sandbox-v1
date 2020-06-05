@@ -1,6 +1,16 @@
-import React, { ReactElement } from "react"
+import React, { ReactElement } from 'react'
 
-export default function Password({ id, value, setPassword, placeholder }: { id: string; value: string; setPassword: Function; placeholder: string }): ReactElement {
+export default function Password({
+  id,
+  value,
+  setPassword,
+  placeholder,
+}: {
+  id: string;
+  value: string;
+  setPassword: Function;
+  placeholder: string;
+}): ReactElement {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setPassword(e.target.value)
   }
