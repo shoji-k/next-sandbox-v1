@@ -11,6 +11,8 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:cypress/recommended',
+    'prettier',
+    'prettier/@typescript-eslint'
   ],
   globals: {
     Atomics: 'readonly',
