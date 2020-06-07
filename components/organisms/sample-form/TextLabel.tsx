@@ -9,6 +9,7 @@ export default function Input({
   setText,
   children,
   error,
+  register,
 }: {
   id: string;
   value?: string;
@@ -16,6 +17,7 @@ export default function Input({
   placeholder: string;
   children: string;
   error?: string;
+  register: Function;
 }): ReactElement {
   return (
     <>
@@ -26,6 +28,7 @@ export default function Input({
         setText={setText}
         placeholder={placeholder}
         error={error}
+        register={register}
       />
     </>
   )

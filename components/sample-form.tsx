@@ -27,9 +27,13 @@ export default function SampleForm(): ReactElement {
             setText={setFirstName}
             placeholder="Jane"
             error="Please fill out this field."
+            register={register}
           >
             First Name
           </TextLabel>
+          {errors["grid-first-name"] && (
+            <p className="text-red-500 text-xs italic">required</p>
+          )}
         </div>
         <div className="w-full md:w-1/2 px-3">
           <TextLabel
@@ -37,9 +41,13 @@ export default function SampleForm(): ReactElement {
             value={lastName}
             setText={setLastName}
             placeholder="Doe"
+            register={register}
           >
             Last Name
           </TextLabel>
+          {errors["grid-last-name"] && (
+            <p className="text-red-500 text-xs italic">required</p>
+          )}
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
@@ -67,9 +75,13 @@ export default function SampleForm(): ReactElement {
             value={city}
             setText={setCity}
             placeholder="Albuquerque"
+            register={register}
           >
             City
           </TextLabel>
+          {errors["grid-city"] && (
+            <p className="text-red-500 text-xs italic">required</p>
+          )}
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <Label inputId="grid-state">State</Label>
@@ -90,9 +102,13 @@ export default function SampleForm(): ReactElement {
             value={zip}
             setText={setZip}
             placeholder="90210"
+            register={register}
           >
             Zip
           </TextLabel>
+          {errors["grid-zip"] && (
+            <p className="text-red-500 text-xs italic">required</p>
+          )}
         </div>
       </div>
       <div className="flex items-center justify-between">

@@ -7,12 +7,14 @@ export default function Input({
   setText,
   placeholder,
   error,
+  register,
 }: {
   id: string;
   value?: string;
   setText?: Function;
   placeholder: string;
   error?: string;
+  register: Function;
 }): ReactElement {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setText(e.target.value)
@@ -33,6 +35,7 @@ export default function Input({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        ref={register({ required: true })}
       />
       {error !== undefined && (
         <p className="text-red-500 text-xs italic">{error}</p>
