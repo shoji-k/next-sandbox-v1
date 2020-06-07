@@ -26,8 +26,8 @@ export default function SampleForm(): ReactElement {
             value={firstName}
             setText={setFirstName}
             placeholder="Jane"
-            error="Please fill out this field."
             register={register}
+            error={!!errors["grid-first-name"]}
           >
             First Name
           </TextLabel>
@@ -42,6 +42,7 @@ export default function SampleForm(): ReactElement {
             setText={setLastName}
             placeholder="Doe"
             register={register}
+            error={!!errors["grid-last-name"]}
           >
             Last Name
           </TextLabel>
@@ -76,6 +77,7 @@ export default function SampleForm(): ReactElement {
             setText={setCity}
             placeholder="Albuquerque"
             register={register}
+            error={!!errors["grid-city"]}
           >
             City
           </TextLabel>
@@ -103,6 +105,7 @@ export default function SampleForm(): ReactElement {
             setText={setZip}
             placeholder="90210"
             register={register}
+            error={!!errors["grid-zip"]}
           >
             Zip
           </TextLabel>

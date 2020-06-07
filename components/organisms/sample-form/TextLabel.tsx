@@ -16,7 +16,7 @@ export default function Input({
   setText?: Function;
   placeholder: string;
   children: string;
-  error?: string;
+  error: boolean;
   register: Function;
 }): ReactElement {
   return (
