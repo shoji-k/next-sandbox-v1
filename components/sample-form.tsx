@@ -60,6 +60,7 @@ export default function SampleForm(): ReactElement {
             setPassword={setPassword}
             placeholder="******************"
             register={register}
+            error={!!errors["grid-password"]}
           />
           {errors["grid-password"] && (
             <p className="text-red-500 text-xs italic">input more than 5 characters</p>
@@ -93,6 +94,7 @@ export default function SampleForm(): ReactElement {
             select={selectState}
             list={['', 'New Mexico', 'Missouri', 'Texas']}
             register={register}
+            error={!!errors["grid-state"]}
           />
           {errors["grid-password"] && (
             <p className="text-red-500 text-xs italic">required</p>
