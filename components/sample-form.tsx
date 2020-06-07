@@ -1,4 +1,5 @@
 import React, { ReactElement, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Label from './organisms/sample-form/Label'
 import Password from './organisms/sample-form/Password'
 import Select from './organisms/sample-form/Select'
@@ -12,8 +13,12 @@ export default function SampleForm(): ReactElement {
   const [state, selectState] = useState('')
   const [zip, setZip] = useState('')
 
+  const { register, errors, handleSubmit } = useForm<FormData>()
+  const onSubmit = (data): void => console.log('submit:', data)
+  console.log('errors:', errors)
+
   return (
-    <form className="w-full max-w-lg mx-auto py-8">
+    <form className="w-full max-w-lg mx-auto py-8" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <TextLabel
@@ -45,7 +50,11 @@ export default function SampleForm(): ReactElement {
             value={password}
             setPassword={setPassword}
             placeholder="******************"
+            register={register}
           />
+          {errors["grid-password"] && (
+            <p className="text-red-500 text-xs italic">input more than 5 characters</p>
+          )}
           <p className="text-gray-600 text-xs italic">
             Make it as long and as crazy as you&apos;d like
           </p>
@@ -82,10 +91,8 @@ export default function SampleForm(): ReactElement {
           </TextLabel>
         </div>
       </div>
-      <div class="flex items-center justify-between">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-          Sign In
-        </button>
+      <div className="flex items-center justify-between">
+        <input className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Save" />
       </div>
     </form>
   )

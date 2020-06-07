@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
-import { useForm } from 'react-hook-form'
 
 export default function Input({
   id,
@@ -15,11 +14,9 @@ export default function Input({
   placeholder: string;
   error?: string;
 }): ReactElement {
-  const { register, errors } = useForm<FormData>()
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setText(e.target.value)
   }
-  console.log(errors)
   return (
     <>
       <input
@@ -36,11 +33,7 @@ export default function Input({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        ref={register({ required: true })}
       />
-      {errors[id] && (
-        <p className="text-red-500 text-xs italic">Input proper value</p>
-      )}
       {error !== undefined && (
         <p className="text-red-500 text-xs italic">{error}</p>
       )}
