@@ -78,7 +78,11 @@ export default function SampleForm(): ReactElement {
             value={state}
             select={selectState}
             list={['', 'New Mexico', 'Missouri', 'Texas']}
+            register={register}
           />
+          {errors["grid-password"] && (
+            <p className="text-red-500 text-xs italic">required</p>
+          )}
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <TextLabel

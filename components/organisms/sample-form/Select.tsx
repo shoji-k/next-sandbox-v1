@@ -5,11 +5,13 @@ export default function Select({
   value,
   select,
   list,
+  register,
 }: {
   id: string;
   value: string;
   select: Function;
   list: string[];
+  register: Function;
 }): ReactElement {
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     select(e.target.value)
@@ -21,6 +23,7 @@ export default function Select({
         id={id}
         value={value}
         onChange={onChange}
+        ref={register({ required: true })}
       >
         {list.map((v) => (
           <option key={v} value={v}>
