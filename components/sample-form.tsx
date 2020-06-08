@@ -15,7 +15,6 @@ export default function SampleForm(): ReactElement {
 
   const { register, errors, handleSubmit } = useForm<FormData>()
   const onSubmit = (data: {}): void => console.log('submit:', data)
-  console.log('errors:', errors)
 
   return (
     <form className="w-full max-w-lg mx-auto py-8" onSubmit={handleSubmit(onSubmit)}>
