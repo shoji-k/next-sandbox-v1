@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, ErrorMessage } from 'react-hook-form'
 import Label from './organisms/sample-form/Label'
 import Password from './organisms/sample-form/Password'
 import Select from './organisms/sample-form/Select'
@@ -21,6 +21,7 @@ export default function SampleForm(): ReactElement {
           >
             First Name
           </TextLabel>
+          <ErrorMessage errors={errors} name="grid-first-name" />
           {errors["grid-first-name"] && (
             <p className="text-red-500 text-xs italic">required</p>
           )}
@@ -48,6 +49,7 @@ export default function SampleForm(): ReactElement {
             register={register}
             error={!!errors["grid-password"]}
           />
+          <ErrorMessage errors={errors} name="grid-password" />
           {errors["grid-password"] && (
             <p className="text-red-500 text-xs italic">input more than 5 characters</p>
           )}
