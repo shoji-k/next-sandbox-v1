@@ -1,6 +1,15 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 
+type PasswordArguments = Readonly<{
+  id: string;
+  value: string;
+  setPassword: Function;
+  placeholder: string;
+  error: boolean;
+  register: Function;
+}>
+
 export default function Password({
   id,
   value,
@@ -8,14 +17,7 @@ export default function Password({
   placeholder,
   error,
   register,
-}: {
-  id: string;
-  value: string;
-  setPassword: Function;
-  placeholder: string;
-  error: boolean;
-  register: Function;
-}): ReactElement {
+}: PasswordArguments): ReactElement {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setPassword(e.target.value)
   }

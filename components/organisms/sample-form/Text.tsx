@@ -1,21 +1,23 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 
-export default function Input({
-  id,
-  value,
-  setText,
-  placeholder,
-  error,
-  register,
-}: {
+type TextArguments = Readonly<{
   id: string;
   value?: string;
   setText?: Function;
   placeholder: string;
   error?: boolean;
   register: Function;
-}): ReactElement {
+}>
+
+export default function Text({
+  id,
+  value,
+  setText,
+  placeholder,
+  error,
+  register,
+}: TextArguments): ReactElement {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setText(e.target.value)
   }

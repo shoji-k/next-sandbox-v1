@@ -14,7 +14,7 @@ export default function SampleForm(): ReactElement {
   const [zip, setZip] = useState('')
 
   const { register, errors, handleSubmit } = useForm<FormData>()
-  const onSubmit = (data): void => console.log('submit:', data)
+  const onSubmit = (data: {}): void => console.log('submit:', data)
   console.log('errors:', errors)
 
   return (
@@ -96,7 +96,7 @@ export default function SampleForm(): ReactElement {
             register={register}
             error={!!errors["grid-state"]}
           />
-          {errors["grid-password"] && (
+          {errors["grid-state"] && (
             <p className="text-red-500 text-xs italic">required</p>
           )}
         </div>

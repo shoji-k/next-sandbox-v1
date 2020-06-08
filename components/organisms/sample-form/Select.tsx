@@ -1,6 +1,15 @@
 import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 
+type SelectArguments = Readonly<{
+  id: string;
+  value: string;
+  select: Function;
+  list: string[];
+  error: boolean;
+  register: Function;
+}>
+
 export default function Select({
   id,
   value,
@@ -8,14 +17,7 @@ export default function Select({
   list,
   error,
   register,
-}: {
-  id: string;
-  value: string;
-  select: Function;
-  list: string[];
-  error: boolean;
-  register: Function;
-}): ReactElement {
+}: SelectArguments): ReactElement {
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     select(e.target.value)
   }
