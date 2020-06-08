@@ -21,10 +21,9 @@ export default function SampleForm(): ReactElement {
           >
             First Name
           </TextLabel>
-          <ErrorMessage errors={errors} name="grid-first-name" />
-          {errors["grid-first-name"] && (
-            <p className="text-red-500 text-xs italic">required</p>
-          )}
+          <ErrorMessage errors={errors} name="grid-first-name">
+            {({ message }: { message: string }): React.ReactElement => <p className="text-red-500 text-xs italic">{message}</p>}
+          </ErrorMessage>
         </div>
         <div className="w-full md:w-1/2 px-3">
           <TextLabel
@@ -35,9 +34,9 @@ export default function SampleForm(): ReactElement {
           >
             Last Name
           </TextLabel>
-          {errors["grid-last-name"] && (
-            <p className="text-red-500 text-xs italic">required</p>
-          )}
+          <ErrorMessage errors={errors} name="grid-last-name">
+            {({ message }: { message: string }): React.ReactElement => <p className="text-red-500 text-xs italic">{message}</p>}
+          </ErrorMessage>
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
@@ -49,10 +48,9 @@ export default function SampleForm(): ReactElement {
             register={register}
             error={!!errors["grid-password"]}
           />
-          <ErrorMessage errors={errors} name="grid-password" />
-          {errors["grid-password"] && (
-            <p className="text-red-500 text-xs italic">input more than 5 characters</p>
-          )}
+          <ErrorMessage errors={errors} name="grid-password">
+            {({ message }: { message: string }): React.ReactElement => <p className="text-red-500 text-xs italic">{message}</p>}
+          </ErrorMessage>
           <p className="text-gray-600 text-xs italic">
             Make it as long and as crazy as you&apos;d like
           </p>
@@ -68,9 +66,9 @@ export default function SampleForm(): ReactElement {
           >
             City
           </TextLabel>
-          {errors["grid-city"] && (
-            <p className="text-red-500 text-xs italic">required</p>
-          )}
+          <ErrorMessage errors={errors} name="grid-city">
+            {({ message }: { message: string }): React.ReactElement => <p className="text-red-500 text-xs italic">{message}</p>}
+          </ErrorMessage>
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <Label inputId="grid-state">State</Label>
@@ -80,9 +78,9 @@ export default function SampleForm(): ReactElement {
             register={register}
             error={!!errors["grid-state"]}
           />
-          {errors["grid-state"] && (
-            <p className="text-red-500 text-xs italic">required</p>
-          )}
+          <ErrorMessage errors={errors} name="grid-state">
+            {({ message }: { message: string }): React.ReactElement => <p className="text-red-500 text-xs italic">{message}</p>}
+          </ErrorMessage>
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <TextLabel
@@ -93,9 +91,9 @@ export default function SampleForm(): ReactElement {
           >
             Zip
           </TextLabel>
-          {errors["grid-zip"] && (
-            <p className="text-red-500 text-xs italic">required</p>
-          )}
+          <ErrorMessage errors={errors} name="grid-zip">
+            {({ message }: { message: string }): React.ReactElement => <p className="text-red-500 text-xs italic">{message}</p>}
+          </ErrorMessage>
         </div>
       </div>
       <div className="flex items-center justify-between">

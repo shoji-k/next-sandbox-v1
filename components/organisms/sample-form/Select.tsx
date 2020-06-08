@@ -25,7 +25,7 @@ export default function Select({
         )}
         id={id}
         name={id}
-        ref={register({ required: true })}
+        ref={register({ required: 'This is required' })}
       >
         {list.map((v) => (
           <option key={v} value={v}>
