@@ -3,8 +3,6 @@ import classnames from 'classnames'
 
 type SelectArguments = Readonly<{
   id: string;
-  value: string;
-  select: Function;
   list: string[];
   error: boolean;
   register: Function;
@@ -12,15 +10,10 @@ type SelectArguments = Readonly<{
 
 export default function Select({
   id,
-  value,
-  select,
   list,
   error,
   register,
 }: SelectArguments): ReactElement {
-  const onChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    select(e.target.value)
-  }
   return (
     <div className="relative">
       <select
@@ -32,8 +25,6 @@ export default function Select({
         )}
         id={id}
         name={id}
-        value={value}
-        onChange={onChange}
         ref={register({ required: true })}
       >
         {list.map((v) => (

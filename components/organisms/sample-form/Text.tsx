@@ -12,15 +12,10 @@ type TextArguments = Readonly<{
 
 export default function Text({
   id,
-  value,
-  setText,
   placeholder,
   error,
   register,
 }: TextArguments): ReactElement {
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setText(e.target.value)
-  }
   return (
     <>
       <input
@@ -34,8 +29,6 @@ export default function Text({
         id={id}
         name={id}
         type="text"
-        value={value}
-        onChange={onChange}
         placeholder={placeholder}
         ref={register({ required: true })}
       />

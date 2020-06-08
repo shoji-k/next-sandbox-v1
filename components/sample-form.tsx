@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement } from 'react'
 import { useForm } from 'react-hook-form'
 import Label from './organisms/sample-form/Label'
 import Password from './organisms/sample-form/Password'
@@ -6,15 +6,8 @@ import Select from './organisms/sample-form/Select'
 import TextLabel from './organisms/sample-form/TextLabel'
 
 export default function SampleForm(): ReactElement {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [password, setPassword] = useState('')
-  const [city, setCity] = useState('')
-  const [state, selectState] = useState('')
-  const [zip, setZip] = useState('')
-
-  const { register, errors, handleSubmit } = useForm<FormData>()
-  const onSubmit = (data: {}): void => console.log('submit:', data)
+  const { register, errors, handleSubmit, formState} = useForm<FormData>()
+  const onSubmit = (data: {}): void => console.log('submit:', data, formState)
 
   return (
     <form className="w-full max-w-lg mx-auto py-8" onSubmit={handleSubmit(onSubmit)}>
@@ -22,8 +15,6 @@ export default function SampleForm(): ReactElement {
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <TextLabel
             id="grid-first-name"
-            value={firstName}
-            setText={setFirstName}
             placeholder="Jane"
             register={register}
             error={!!errors["grid-first-name"]}
@@ -37,8 +28,6 @@ export default function SampleForm(): ReactElement {
         <div className="w-full md:w-1/2 px-3">
           <TextLabel
             id="grid-last-name"
-            value={lastName}
-            setText={setLastName}
             placeholder="Doe"
             register={register}
             error={!!errors["grid-last-name"]}
@@ -55,8 +44,6 @@ export default function SampleForm(): ReactElement {
           <Label inputId="grid-password">Password</Label>
           <Password
             id="grid-password"
-            value={password}
-            setPassword={setPassword}
             placeholder="******************"
             register={register}
             error={!!errors["grid-password"]}
@@ -73,8 +60,6 @@ export default function SampleForm(): ReactElement {
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <TextLabel
             id="grid-city"
-            value={city}
-            setText={setCity}
             placeholder="Albuquerque"
             register={register}
             error={!!errors["grid-city"]}
@@ -89,8 +74,6 @@ export default function SampleForm(): ReactElement {
           <Label inputId="grid-state">State</Label>
           <Select
             id="grid-state"
-            value={state}
-            select={selectState}
             list={['', 'New Mexico', 'Missouri', 'Texas']}
             register={register}
             error={!!errors["grid-state"]}
@@ -102,8 +85,6 @@ export default function SampleForm(): ReactElement {
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <TextLabel
             id="grid-zip"
-            value={zip}
-            setText={setZip}
             placeholder="90210"
             register={register}
             error={!!errors["grid-zip"]}

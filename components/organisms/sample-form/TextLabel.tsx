@@ -4,8 +4,6 @@ import Label from './Label'
 
 type TextLabelArguments = Readonly<{
   id: string;
-  value?: string;
-  setText?: Function;
   placeholder: string;
   children: string;
   error: boolean;
@@ -15,8 +13,6 @@ type TextLabelArguments = Readonly<{
 export default function TextLabel({
   id,
   placeholder,
-  value,
-  setText,
   children,
   error,
   register,
@@ -26,8 +22,6 @@ export default function TextLabel({
       <Label inputId={id}>{children}</Label>
       <Text
         id={id}
-        value={value}
-        setText={setText}
         placeholder={placeholder}
         error={error}
         register={register}
