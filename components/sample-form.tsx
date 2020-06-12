@@ -5,6 +5,12 @@ import Password from './organisms/sample-form/Password'
 import Select from './organisms/sample-form/Select'
 import TextLabel from './organisms/sample-form/TextLabel'
 
+const Alert = (children: React.ReactNode): React.ReactElement => {
+  return (
+    <p className="text-red-500 text-xs italic">{children}</p>
+  )
+}
+
 export default function SampleForm(): ReactElement {
   const { register, errors, handleSubmit, formState} = useForm<FormData>()
   const onSubmit = (data: {}): void => console.log('submit:', data, formState)
@@ -22,7 +28,7 @@ export default function SampleForm(): ReactElement {
             First Name
           </TextLabel>
           <ErrorMessage errors={errors} name="grid-first-name">
-            {({ message }: { message: string }): React.ReactElement => <p className="text-red-500 text-xs italic">{message}</p>}
+            {({ message }: { message: string }): React.ReactElement => <Alert>{message}</Alert>}
           </ErrorMessage>
         </div>
         <div className="w-full md:w-1/2 px-3">
