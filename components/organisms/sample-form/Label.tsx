@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 
-type LabelType = Readonly<{
+type LabelArguments = Readonly<{
   inputId: string;
   children: React.ReactNode;
 }>
@@ -8,7 +8,7 @@ type LabelType = Readonly<{
 export default function Label({
   inputId,
   children,
-}: LabelType): ReactElement {
+}: LabelArguments): ReactElement {
   return (
     <label
       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
