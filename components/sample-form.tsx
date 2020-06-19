@@ -6,7 +6,6 @@ import Select from './organisms/sample-form/Select'
 import TextLabel from './organisms/sample-form/TextLabel'
 
 type AlertArguments = Readonly<{ children: React.ReactNode }>
-
 const Alert = ({ children }: AlertArguments): React.ReactElement => {
   return <p className="text-red-500 text-xs italic">{children}</p>
 }
@@ -47,7 +46,7 @@ export default function SampleForm(): ReactElement {
           </TextLabel>
           <ErrorMessage errors={errors} name="grid-last-name">
             {({ message }: { message: string }): React.ReactElement => (
-              <p className="text-red-500 text-xs italic">{message}</p>
+              <Alert>{message}</Alert>
             )}
           </ErrorMessage>
         </div>
@@ -63,7 +62,7 @@ export default function SampleForm(): ReactElement {
           />
           <ErrorMessage errors={errors} name="grid-password">
             {({ message }: { message: string }): React.ReactElement => (
-              <p className="text-red-500 text-xs italic">{message}</p>
+              <Alert>{message}</Alert>
             )}
           </ErrorMessage>
           <p className="text-gray-600 text-xs italic">
@@ -83,7 +82,7 @@ export default function SampleForm(): ReactElement {
           </TextLabel>
           <ErrorMessage errors={errors} name="grid-city">
             {({ message }: { message: string }): React.ReactElement => (
-              <p className="text-red-500 text-xs italic">{message}</p>
+              <Alert>{message}</Alert>
             )}
           </ErrorMessage>
         </div>
@@ -97,7 +96,7 @@ export default function SampleForm(): ReactElement {
           />
           <ErrorMessage errors={errors} name="grid-state">
             {({ message }: { message: string }): React.ReactElement => (
-              <p className="text-red-500 text-xs italic">{message}</p>
+              <Alert>{message}</Alert>
             )}
           </ErrorMessage>
         </div>
@@ -112,7 +111,7 @@ export default function SampleForm(): ReactElement {
           </TextLabel>
           <ErrorMessage errors={errors} name="grid-zip">
             {({ message }: { message: string }): React.ReactElement => (
-              <p className="text-red-500 text-xs italic">{message}</p>
+              <Alert>{message}</Alert>
             )}
           </ErrorMessage>
         </div>
