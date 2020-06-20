@@ -10,6 +10,15 @@ const Alert = ({ children }: AlertArguments): React.ReactElement => {
   return <p className="text-red-500 text-xs italic">{children}</p>
 }
 
+type AlertMessageArguments = Readonly<{ errors: string[], name: string}>
+const AlertMessage = ({ errors, name }: AlertMessageArguments): React.ReactElement => {
+  return (<ErrorMessage errors={errors} name={name}>
+    {({ message }: { message: string }): React.ReactElement => (
+      <Alert>{message}</Alert>
+    )}
+  </ErrorMessage>)
+}
+
 export default function SampleForm(): ReactElement {
   const { register, errors, handleSubmit, formState } = useForm<FormData>()
   const onSubmit = (data: {}): void => console.log('submit:', data, formState)
@@ -29,11 +38,7 @@ export default function SampleForm(): ReactElement {
           >
             First Name
           </TextLabel>
-          <ErrorMessage errors={errors} name="grid-first-name">
-            {({ message }: { message: string }): React.ReactElement => (
-              <Alert>{message}</Alert>
-            )}
-          </ErrorMessage>
+          <AlertMessage errors={errors} name="grid-first-name" />
         </div>
         <div className="w-full md:w-1/2 px-3">
           <TextLabel
@@ -44,11 +49,7 @@ export default function SampleForm(): ReactElement {
           >
             Last Name
           </TextLabel>
-          <ErrorMessage errors={errors} name="grid-last-name">
-            {({ message }: { message: string }): React.ReactElement => (
-              <Alert>{message}</Alert>
-            )}
-          </ErrorMessage>
+          <AlertMessage errors={errors} name="grid-last-name" />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
@@ -60,11 +61,7 @@ export default function SampleForm(): ReactElement {
             register={register}
             error={!!errors['grid-password']}
           />
-          <ErrorMessage errors={errors} name="grid-password">
-            {({ message }: { message: string }): React.ReactElement => (
-              <Alert>{message}</Alert>
-            )}
-          </ErrorMessage>
+          <AlertMessage errors={errors} name="grid-password" />
           <p className="text-gray-600 text-xs italic">
             Make it as long and as crazy as you&apos;d like
           </p>
@@ -80,11 +77,7 @@ export default function SampleForm(): ReactElement {
           >
             City
           </TextLabel>
-          <ErrorMessage errors={errors} name="grid-city">
-            {({ message }: { message: string }): React.ReactElement => (
-              <Alert>{message}</Alert>
-            )}
-          </ErrorMessage>
+          <AlertMessage errors={errors} name="grid-city" />
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <Label inputId="grid-state">State</Label>
@@ -94,11 +87,7 @@ export default function SampleForm(): ReactElement {
             register={register}
             error={!!errors['grid-state']}
           />
-          <ErrorMessage errors={errors} name="grid-state">
-            {({ message }: { message: string }): React.ReactElement => (
-              <Alert>{message}</Alert>
-            )}
-          </ErrorMessage>
+          <AlertMessage errors={errors} name="grid-state" />
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <TextLabel
@@ -109,11 +98,7 @@ export default function SampleForm(): ReactElement {
           >
             Zip
           </TextLabel>
-          <ErrorMessage errors={errors} name="grid-zip">
-            {({ message }: { message: string }): React.ReactElement => (
-              <Alert>{message}</Alert>
-            )}
-          </ErrorMessage>
+          <AlertMessage errors={errors} name="grid-zip" />
         </div>
       </div>
       <div className="flex items-center justify-between">
