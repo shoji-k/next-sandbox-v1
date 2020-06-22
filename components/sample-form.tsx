@@ -4,11 +4,7 @@ import Label from './organisms/sample-form/Label'
 import Password from './organisms/sample-form/Password'
 import Select from './organisms/sample-form/Select'
 import TextLabel from './organisms/sample-form/TextLabel'
-
-type AlertArguments = Readonly<{ children: React.ReactNode }>
-const Alert = ({ children }: AlertArguments): React.ReactElement => {
-  return <p className="text-red-500 text-xs italic">{children}</p>
-}
+import { Alert } from './atoms/Alert'
 
 type AlertMessageArguments = Readonly<{ errors: string[], name: string}>
 const AlertMessage = ({ errors, name }: AlertMessageArguments): React.ReactElement => {
