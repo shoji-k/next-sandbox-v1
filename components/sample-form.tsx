@@ -4,17 +4,8 @@ import Label from './organisms/sample-form/Label'
 import Password from './organisms/sample-form/Password'
 import Select from './organisms/sample-form/Select'
 import TextLabel from './organisms/sample-form/TextLabel'
+import { Submit } from './atoms/Submit'
 import { AlertMessage } from './molecules/AlertMessage'
-
-const Submit = (): React.ReactElement => {
-  return (
-    <input
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-      type="submit"
-      value="Save"
-    />
-  )
-}
 
 export default function SampleForm(): ReactElement {
   const { register, errors, handleSubmit, formState } = useForm<FormData>()

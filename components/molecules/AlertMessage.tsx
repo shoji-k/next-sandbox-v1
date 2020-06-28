@@ -3,9 +3,9 @@ import { ErrorMessage } from 'react-hook-form'
 import { Alert } from '../atoms/Alert'
 
 type AlertMessageArguments = Readonly<{ errors: string[], name: string}>
-export const AlertMessage = ({ errors, name }: AlertMessageArguments): React.ReactElement => {
+export const AlertMessage = ({ errors, name }: AlertMessageArguments): ReactElement => {
   return (<ErrorMessage errors={errors} name={name}>
-    {({ message }: { message: string }): React.ReactElement => (
+    {({ message }: { message: string }): ReactElement => (
       <Alert>{message}</Alert>
     )}
   </ErrorMessage>)
