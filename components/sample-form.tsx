@@ -55,7 +55,7 @@ export default function SampleForm(): ReactElement {
           </p>
         </div>
       </div>
-      <div className="flex flex-wrap -mx-3 mb-2">
+      <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <TextLabel
             id="grid-city"
@@ -89,8 +89,10 @@ export default function SampleForm(): ReactElement {
           <AlertMessage errors={errors} name="grid-zip" />
         </div>
       </div>
-      <div className="flex items-center justify-between">
-        <Submit />
+      <div className="flex flex-wrap -mx-3 mb-6">
+        <div className="w-full px-3 mb-6 md:mb-0">
+          <Submit />
+        </div>
       </div>
     </form>
   )
