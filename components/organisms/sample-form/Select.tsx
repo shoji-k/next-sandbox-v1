@@ -1,26 +1,31 @@
 import React, { ReactElement } from 'react'
+import classnames from 'classnames'
+
+type SelectArguments = Readonly<{
+  id: string;
+  list: string[];
+  error: boolean;
+  register: Function;
+}>
 
 export default function Select({
   id,
-  value,
-  select,
   list,
-}: {
-  id: string;
-  value: string;
-  select: Function;
-  list: string[];
-}): ReactElement {
-  const onChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    select(e.target.value)
-  }
+  error,
+  register,
+}: SelectArguments): ReactElement {
   return (
     <div className="relative">
       <select
-        className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        className={classnames('block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500',
+          {
+            'border-gray-200': !error,
+            'border-red-500': error,
+          }
+        )}
         id={id}
-        value={value}
-        onChange={onChange}
+        name={id}
+        ref={register({ required: 'This is required' })}
       >
         {list.map((v) => (
           <option key={v} value={v}>
