@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout from '../components/layout'
-import { getIp } from '../lib/httpbin'
-import Ip from '../components/ip'
+import Layout from '@/components/layout'
+import { getIp } from '@/lib/httpbin'
+import Ip from '@/components/ip'
 
 export default function SamplePage({ ip }: { ip: string }): ReactElement {
   return (
