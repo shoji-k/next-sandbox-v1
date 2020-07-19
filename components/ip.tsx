@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import useSWR from 'swr'
-import fetch from '../lib/fetch'
+import fetch from '@/lib/fetch'
 
 export default function Ip(): ReactElement {
   const url = 'https://httpbin.org/ip'
