@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { ErrorMessage, NestDataObject, FieldError } from 'react-hook-form'
-import { Alert } from '../atoms/Alert'
+import { Alert } from '@/atoms/Alert'
 
 type AlertMessageArguments = Readonly<{ errors: NestDataObject<FormData, FieldError>, name: string}>
 // eslint-disable-next-line react/prop-types
