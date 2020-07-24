@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
 import { useForm } from 'react-hook-form'
-import Label from './organisms/sample-form/Label'
-import Password from './organisms/sample-form/Password'
-import Select from './organisms/sample-form/Select'
-import TextLabel from './organisms/sample-form/TextLabel'
-import { Submit } from './atoms/Submit'
-import { AlertMessage } from './molecules/AlertMessage'
+import Label from '@/components/organisms/sample-form/Label'
+import Password from '@/components/organisms/sample-form/Password'
+import Select from '@/components/organisms/sample-form/Select'
+import TextLabel from '@/components/organisms/sample-form/TextLabel'
+import { Submit } from '@/components/atoms/Submit'
+import { AlertMessage } from '@/components/molecules/AlertMessage'
 
 export default function SampleForm(): ReactElement {
   const { register, errors, handleSubmit, formState } = useForm<FormData>()
