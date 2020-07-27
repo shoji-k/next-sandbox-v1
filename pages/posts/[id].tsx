@@ -1,10 +1,11 @@
+import React, { ReactElement } from 'react'
 import Layout from '@/components/layout'
 import { getAllPostIds, getPostData } from '@/lib/posts'
 import Head from 'next/head'
 import Date from '@/components/date'
 import utilStyles from '@/styles/utils.module.css'
 
-export default function Post({ postData }) {
+export default function Post({ postData }: { title: string, date: string, contentHtml: string } ): ReactElement {
   return (
     <Layout>
       <Head>
@@ -21,7 +22,7 @@ export default function Post({ postData }) {
   )
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(): { paths: string[], fallback: boolean } {
   const paths = getAllPostIds()
   return {
     paths,
