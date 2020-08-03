@@ -1,18 +1,21 @@
 import React, { ReactElement } from 'react'
-import Layout from '@/components/layout'
-import { getAllPostIds, getPostData } from '@/lib/posts'
 import Head from 'next/head'
 import Link from 'next/link'
+import { getAllPostIds, getPostData } from '@/lib/posts'
+import Layout from '@/components/layout'
 import Date from '@/components/atoms/Date'
 import utilStyles from '@/styles/utils.module.css'
+import { GetStaticProps, GetStaticPaths } from 'next'
 
 /* eslint react/prop-types: 0 */
 export default function Post({
   postData,
 }: {
-  title: string
-  date: string
-  contentHtml: string
+  postData: {
+    title: string
+    date: string
+    contentHtml: string
+  }
 }): ReactElement {
   return (
     <Layout>
@@ -26,14 +29,16 @@ export default function Post({
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
         <div>
-          <Link href="/posts"><a>back</a></Link>
+          <Link href="/posts">
+            <a>back</a>
+          </Link>
         </div>
       </article>
     </Layout>
   )
 }
 
-export async function getStaticPaths(): { paths: string[]; fallback: boolean } {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getAllPostIds()
   return {
     paths,
@@ -41,9 +46,8 @@ export async function getStaticPaths(): { paths: string[]; fallback: boolean } {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id)
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const postData = await getPostData(params.id as string)
   return {
     props: {
       postData,

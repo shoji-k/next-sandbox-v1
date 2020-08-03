@@ -1,17 +1,25 @@
 import React, { ReactElement } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout from '@/components/layout'
-import Date from '@/components/atoms/Date'
+import Layout, { siteName } from '@/components/layout'
 import utilStyles from '@/styles/utils.module.css'
 import { getSortedPostsData } from '@/lib/posts'
+import Date from '@/components/atoms/Date'
+import { GetStaticProps } from 'next'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function Home({ allPostsData }: { allPostsData: any[] }): ReactElement {
+export default function Home({
+  allPostsData,
+}: {
+  allPostsData: {
+    date: string
+    title: string
+    id: string
+  }[]
+}): ReactElement {
   return (
-    <Layout home>
+    <Layout>
       <Head>
-        <title>News: Sample Site</title>
+        <title>Posts: {siteName}</title>
       </Head>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>News</h2>
@@ -33,12 +41,11 @@ export default function Home({ allPostsData }: { allPostsData: any[] }): ReactEl
   )
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function getStaticProps(): { props: { allPostsData: any[] } } {
+export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData()
   return {
     props: {
-      allPostsData
-    }
+      allPostsData,
+    },
   }
 }
