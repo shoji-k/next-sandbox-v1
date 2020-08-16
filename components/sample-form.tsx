@@ -11,7 +11,7 @@ import { AlertMessage } from '@/components/molecules/AlertMessage'
 export default function SampleForm(): ReactElement {
   const [saving, setSaving] = useState(false)
   const { register, errors, handleSubmit } = useForm<FormData>()
-  const onSubmit = async (data: {}): void => {
+  const onSubmit = async (data: {}): Promise<void> => {
     try {
       setSaving(true)
       await fetchPost('/api/form', data)
