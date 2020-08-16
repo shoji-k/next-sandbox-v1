@@ -9,4 +9,3 @@ export const Submit = (): ReactElement => {
     />
   )
 }
-

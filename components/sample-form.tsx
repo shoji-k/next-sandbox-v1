@@ -9,7 +9,10 @@ import { AlertMessage } from '@/components/molecules/AlertMessage'
 
 export default function SampleForm(): ReactElement {
   const { register, errors, handleSubmit, formState } = useForm<FormData>()
-  const onSubmit = (data: {}): void => console.log('submit:', data, formState)
+  const onSubmit = (data: {}): void => {
+    alert('submit')
+    console.log('submit:', data, formState)
+  }
 
   return (
     <form
