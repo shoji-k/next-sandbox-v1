@@ -4,8 +4,8 @@ import Label from '@/components/organisms/sample-form/Label'
 import Password from '@/components/organisms/sample-form/Password'
 import Select from '@/components/organisms/sample-form/Select'
 import TextLabel from '@/components/organisms/sample-form/TextLabel'
+import { Alert } from '@/components/atoms/Alert'
 import { Submit } from '@/components/atoms/Submit'
-import { AlertMessage } from '@/components/molecules/AlertMessage'
 
 export default function SampleForm(): ReactElement {
   const { register, errors, handleSubmit, formState } = useForm<FormData>()
@@ -26,7 +26,7 @@ export default function SampleForm(): ReactElement {
           >
             First Name
           </TextLabel>
-          <AlertMessage errors={errors} name="grid-first-name" />
+          <Alert error={errors['grid-first-name']?.message} />
         </div>
         <div className="w-full md:w-1/2 px-3">
           <TextLabel
@@ -37,7 +37,7 @@ export default function SampleForm(): ReactElement {
           >
             Last Name
           </TextLabel>
-          <AlertMessage errors={errors} name="grid-last-name" />
+          <Alert error={errors['grid-last-name']?.message} />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
@@ -49,7 +49,7 @@ export default function SampleForm(): ReactElement {
             register={register}
             error={!!errors['grid-password']}
           />
-          <AlertMessage errors={errors} name="grid-password" />
+          <Alert error={errors['grid-password']?.message} />
           <p className="text-gray-600 text-xs italic">
             Make it as long and as crazy as you&apos;d like
           </p>
@@ -65,7 +65,7 @@ export default function SampleForm(): ReactElement {
           >
             City
           </TextLabel>
-          <AlertMessage errors={errors} name="grid-city" />
+          <Alert error={errors['grid-city']?.message} />
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <Label inputId="grid-state">State</Label>
@@ -75,7 +75,7 @@ export default function SampleForm(): ReactElement {
             register={register}
             error={!!errors['grid-state']}
           />
-          <AlertMessage errors={errors} name="grid-state" />
+          <Alert error={errors['grid-state']?.message} />
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <TextLabel
@@ -86,7 +86,7 @@ export default function SampleForm(): ReactElement {
           >
             Zip
           </TextLabel>
-          <AlertMessage errors={errors} name="grid-zip" />
+          <Alert error={errors['grid-zip']?.message} />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
