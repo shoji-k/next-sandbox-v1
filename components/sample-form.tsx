@@ -1,5 +1,6 @@
-import React, { ReactElement } from 'react'
+import React, { useState, ReactElement } from 'react'
 import { useForm } from 'react-hook-form'
+import { fetchPost } from '@/lib/fetch'
 import Label from '@/components/organisms/sample-form/Label'
 import Password from '@/components/organisms/sample-form/Password'
 import Select from '@/components/organisms/sample-form/Select'
@@ -8,8 +9,17 @@ import { Submit } from '@/components/atoms/Submit'
 import { AlertMessage } from '@/components/molecules/AlertMessage'
 
 export default function SampleForm(): ReactElement {
-  const { register, errors, handleSubmit, formState } = useForm<FormData>()
-  const onSubmit = (data: {}): void => console.log('submit:', data, formState)
+  const [saving, setSaving] = useState(false)
+  const { register, errors, handleSubmit } = useForm<FormData>()
+  const onSubmit = async (data: {}): Promise<void> => {
+    try {
+      setSaving(true)
+      await fetchPost('/api/form', data)
+      setSaving(false)
+    } catch {
+      alert('Save errors happen')
+    }
+  }
 
   return (
     <form
@@ -91,7 +101,7 @@ export default function SampleForm(): ReactElement {
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3 mb-6 md:mb-0">
-          <Submit />
+          <Submit disabled={saving} />
         </div>
       </div>
     </form>
