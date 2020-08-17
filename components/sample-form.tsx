@@ -15,9 +15,10 @@ export default function SampleForm(): ReactElement {
     try {
       setSaving(true)
       await fetchPost('/api/form', data)
-      setSaving(false)
     } catch {
       alert('Save errors happen')
+    } finally {
+      setSaving(false)
     }
   }
 
