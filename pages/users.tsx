@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import Head from 'next/head'
 import { load, user } from '@/lib/firebase'
 import Layout, { siteName } from '@/components/layout'
+import UserList from '@/components/users/list'
 import { GetStaticProps } from 'next'
 
 export default function Home({ users }: { users: user[] }): ReactElement {
@@ -11,13 +12,9 @@ export default function Home({ users }: { users: user[] }): ReactElement {
         <title>Users: {siteName}</title>
       </Head>
       <section>
-        <ul className="flex flex-wrap mt-8 text-center">
-          {users.map(({ id, first, middle, last, born }) => (
-            <li className="w-full" key={id}>
-              {first} {middle} {last} {born}
-            </li>
-          ))}
-        </ul>
+        <UserList users={users} />
+      </section>
+      <section>
       </section>
     </Layout>
   )
