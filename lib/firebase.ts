@@ -42,16 +42,18 @@ export const load = (): Promise<user[] | string> => {
   })
 }
 
-export const post = (user: user): Promise<void> => {
-  console.log('post', user)
-  const db = app.firestore()
-  db.collection('users')
-    .add(user)
-    .then(function (docRef) {
-      console.log('Document written with ID: ', docRef.id)
-    })
-    .catch(function (error) {
-      console.error('Error adding document: ', error)
-      throw error
-    })
+export const create = (user: user): Promise<void> => {
+  return new Promise((resolve, reject) => {
+    const db = app.firestore()
+    db.collection('users')
+      .add(user)
+      .then(function (docRef) {
+        console.log('Document written with ID: ', docRef.id)
+        resolve(docRef)
+      })
+      .catch(function (error) {
+        console.error('Error adding document: ', error)
+        reject(error.message)
+      })
+  })
 }

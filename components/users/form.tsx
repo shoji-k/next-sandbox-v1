@@ -1,5 +1,6 @@
 import React, { useState, ReactElement } from 'react'
 import { useForm } from 'react-hook-form'
+import { create } from '@/lib/firebase'
 import TextLabel from '@/components/organisms/sample-form/TextLabel'
 import { Alert } from '@/components/atoms/Alert'
 import { Submit } from '@/components/atoms/Submit'
@@ -10,7 +11,7 @@ export default function UserForm(): ReactElement {
   const onSubmit = async (user: {}): Promise<void> => {
     try {
       setSaving(true)
-      post(user)
+      create(user)
       console.log('save')
     } catch {
       alert('Save errors happen')
