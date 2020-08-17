@@ -12,7 +12,7 @@ export default (req: NextApiRequest, res: NextApiResponse): void => {
         const users = []
         snapshot.forEach((doc) => {
           const user = doc.data()
-          users.push(user)
+          users.push({ id: doc.id, ...user })
         })
         res.statusCode = 200
         res.json({ users: users })
