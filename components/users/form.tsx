@@ -7,13 +7,15 @@ import { Submit } from '@/components/atoms/Submit'
 export default function UserForm(): ReactElement {
   const [saving, setSaving] = useState(false)
   const { register, errors, handleSubmit } = useForm<FormData>()
-  const onSubmit = async (): Promise<void> => {
+  const onSubmit = async (user: {}): Promise<void> => {
     try {
       setSaving(true)
+      post(user)
       console.log('save')
-      setSaving(false)
     } catch {
       alert('Save errors happen')
+    } finally {
+      setSaving(false)
     }
   }
 
