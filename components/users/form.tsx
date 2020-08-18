@@ -11,8 +11,9 @@ export default function UserForm(): ReactElement {
   const onSubmit = async (user: {}): Promise<void> => {
     try {
       setSaving(true)
-      create(user)
-      console.log('save')
+      const id = create(user)
+      // addUser({ id, ...user })
+      console.log('saved', id)
     } catch {
       alert('Save errors happen')
     } finally {

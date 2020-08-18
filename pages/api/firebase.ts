@@ -12,10 +12,11 @@ const get = (_req: NextApiRequest, res: NextApiResponse): void => {
   }
 }
 
-const post = (req: NextApiRequest, res: NextApiResponse): void => {
+const post = async (req: NextApiRequest, res: NextApiResponse): void => {
   try {
     const params = JSON.parse(req.body)
-    const user = create(params)
+    const user = await create(params)
+    console.log(user)
     res.statusCode = 200
     res.json({ data: user })
   } catch (e) {

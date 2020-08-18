@@ -8,10 +8,11 @@ const firebaseConfig = {
   projectId: process.env.PROJECT_ID,
   appId: process.env.APP_ID,
 }
+console.log(firebaseConfig)
 const app = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
   : firebase.app()
-export default app
+const db = app.firestore()
 
 export type user = {
   first?: string
@@ -22,7 +23,6 @@ export type user = {
 
 export const load = (): Promise<user[] | string> => {
   return new Promise((resolve, reject) => {
-    const db = app.firestore()
     db.collection('users')
       .orderBy('first', 'asc')
       .limit(10)
@@ -42,14 +42,13 @@ export const load = (): Promise<user[] | string> => {
   })
 }
 
-export const create = (user: user): Promise<void> => {
+export const create = (user: user): Promise<string> => {
   return new Promise((resolve, reject) => {
-    const db = app.firestore()
     db.collection('users')
       .add(user)
       .then(function (docRef) {
         console.log('Document written with ID: ', docRef.id)
-        resolve(docRef)
+        resolve(docRef.id)
       })
       .catch(function (error) {
         console.error('Error adding document: ', error)
