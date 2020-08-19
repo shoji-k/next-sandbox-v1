@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { user } from '@/lib/firebase'
+import { user } from '@/lib/firebaseDatabase'
 
 export default function UserList({ users }: { users: user[] }): ReactElement {
   return (

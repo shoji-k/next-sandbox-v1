@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { load, create } from '@/lib/firebase'
+import { load, create } from '@/lib/firebaseDatabase'
 
-const get = (_req: NextApiRequest, res: NextApiResponse): void => {
+const get = (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   try {
     const users = load()
     res.statusCode = 200
@@ -12,17 +12,18 @@ const get = (_req: NextApiRequest, res: NextApiResponse): void => {
   }
 }
 
-const post = async (req: NextApiRequest, res: NextApiResponse): void => {
+const post = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   try {
-    const params = JSON.parse(req.body)
-    const user = await create(params)
-    console.log(user)
+    console.log(req.body)
+    const params = req.body
+    // console.log(params)
+    const id = await create(params)
     res.statusCode = 200
-    res.json({ data: user })
+    res.json({ data: { id: id} })
   } catch (e) {
     res.statusCode = 500
     console.log(e)
-    res.json({ errors: ['post error'] })
+    res.json({ errors: ['post error', e.message] })
   }
 }
 
@@ -30,7 +31,7 @@ const post = async (req: NextApiRequest, res: NextApiResponse): void => {
 export default async function (
   req: NextApiRequest,
   res: NextApiResponse
-): void {
+): Promise<void> {
   if (req.method === 'POST') {
     await post(req, res)
     return

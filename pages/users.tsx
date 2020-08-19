@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import Head from 'next/head'
-import { load, user } from '@/lib/firebase'
+import { load, user } from '@/lib/firebaseDatabase'
 import Layout, { siteName } from '@/components/layout'
 import UserForm from '@/components/users/form'
 import UserList from '@/components/users/list'
