@@ -1,6 +1,6 @@
 import React, { useState, ReactElement } from 'react'
 import { useForm } from 'react-hook-form'
-import { create, user } from '@/lib/firebaseDatabase'
+import { fetchPost } from '@/lib/fetch'
 import TextLabel from '@/components/organisms/sample-form/TextLabel'
 import { Alert } from '@/components/atoms/Alert'
 import { Submit } from '@/components/atoms/Submit'
@@ -11,8 +11,7 @@ export default function UserForm(): ReactElement {
   const onSubmit = async (user: user): Promise<void> => {
     try {
       setSaving(true)
-      console.log(user)
-      const id = create(user)
+      const id = fetchPost('/api/firebase', user)
       // addUser({ id, ...user })
       console.log('saved', id)
     } catch {

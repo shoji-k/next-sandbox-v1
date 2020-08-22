@@ -14,9 +14,7 @@ const get = (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
 
 const post = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   try {
-    console.log(req.body)
-    const params = req.body
-    // console.log(params)
+    const params = JSON.parse(req.body)
     const id = await create(params)
     res.statusCode = 200
     res.json({ data: { id: id} })
