@@ -1,4 +1,3 @@
-// import { db } from '@/lib/firebase'
 import firebase from '@/lib/firebase'
 
 export type user = {

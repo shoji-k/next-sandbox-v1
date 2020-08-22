@@ -14,4 +14,3 @@ const app = !firebase.apps.length
   : firebase.app()
 
 export default app
-// export const db = app.firestore()
