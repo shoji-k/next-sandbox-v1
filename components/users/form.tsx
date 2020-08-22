@@ -4,9 +4,11 @@ import { fetchPost } from '@/lib/fetch'
 import TextLabel from '@/components/organisms/sample-form/TextLabel'
 import { Alert } from '@/components/atoms/Alert'
 import { Submit } from '@/components/atoms/Submit'
+import { Toast } from '@/components/atoms/Toast'
 
 export default function UserForm(): ReactElement {
   const [saving, setSaving] = useState(false)
+  const [message, setMessage] = useState('')
   const { register, errors, handleSubmit, reset } = useForm<FormData>()
   const onSubmit = async (user: user): Promise<void> => {
     try {
@@ -14,6 +16,7 @@ export default function UserForm(): ReactElement {
       const id = fetchPost('/api/firebase', user)
       // addUser({ id, ...user })
       console.log('saved', id)
+      setMessage('Saved')
       reset()
     } catch {
       alert('Save errors happen')
@@ -63,6 +66,7 @@ export default function UserForm(): ReactElement {
           <Submit disabled={saving} />
         </div>
       </div>
+      { message ? <Toast message={'hey toast'} /> : null }
     </form>
   )
 }
