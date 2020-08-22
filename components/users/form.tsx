@@ -7,13 +7,14 @@ import { Submit } from '@/components/atoms/Submit'
 
 export default function UserForm(): ReactElement {
   const [saving, setSaving] = useState(false)
-  const { register, errors, handleSubmit } = useForm<FormData>()
+  const { register, errors, handleSubmit, reset } = useForm<FormData>()
   const onSubmit = async (user: user): Promise<void> => {
     try {
       setSaving(true)
       const id = fetchPost('/api/firebase', user)
       // addUser({ id, ...user })
       console.log('saved', id)
+      reset()
     } catch {
       alert('Save errors happen')
     } finally {
