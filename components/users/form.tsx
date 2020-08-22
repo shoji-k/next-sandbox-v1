@@ -6,19 +6,19 @@ import { Alert } from '@/components/atoms/Alert'
 import { Submit } from '@/components/atoms/Submit'
 import { Toast } from '@/components/atoms/Toast'
 
-export default function UserForm(): ReactElement {
+export default function UserForm({ addUser } : { addUser: Function }): ReactElement {
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
   const { register, errors, handleSubmit, reset } = useForm<FormData>()
   const onSubmit = async (user: user): Promise<void> => {
     try {
       setSaving(true)
-      const id = fetchPost('/api/firebase', user)
-      // addUser({ id, ...user })
-      console.log('saved', id)
+      const res = await fetchPost('/api/firebase', user)
+      addUser({ id: res.data.id, ...user })
       setMessage('Saved')
       reset()
-    } catch {
+    } catch (e) {
+      console.log(e)
       alert('Save errors happen')
     } finally {
       setSaving(false)

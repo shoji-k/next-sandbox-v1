@@ -36,7 +36,7 @@ export const create = (user: user): Promise<string> => {
     db.collection('users')
       .add(user)
       .then(function (docRef) {
-        console.log('Document written with ID: ', docRef.id)
+        // console.log('Document written with ID: ', docRef.id)
         resolve(docRef.id)
       })
       .catch(function (error) {

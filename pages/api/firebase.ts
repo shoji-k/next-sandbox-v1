@@ -31,8 +31,7 @@ export default async function (
   res: NextApiResponse
 ): Promise<void> {
   if (req.method === 'POST') {
-    await post(req, res)
-    return
+    return await post(req, res)
   }
   await get(req, res)
 }
