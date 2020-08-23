@@ -16,3 +16,7 @@ export async function fetchPost(
   })
   return res.json()
 }
+
+export async function callDelete(url: string): Promise<{void}> {
+  await fetch(url, { method: 'DELETE' })
+}

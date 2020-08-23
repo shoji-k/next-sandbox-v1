@@ -13,6 +13,10 @@ export default function Home({ users }: { users: user[] }): ReactElement {
     const newList = [...list, user]
     setList(newList)
   }
+  const deleteUser = (id: string): void => {
+    const newList = list.filter(l => l.id !== id)
+    setList(newList)
+  }
 
   useEffect(() => {
     setList(users)
@@ -25,7 +29,7 @@ export default function Home({ users }: { users: user[] }): ReactElement {
       </Head>
       <section className="mb-8">
         <p className="text-center">Lists</p>
-        <UserList users={list} />
+        <UserList users={list} deleteUser={deleteUser} />
       </section>
       <section>
         <p className="text-center">Add user</p>

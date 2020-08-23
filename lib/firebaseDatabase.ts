@@ -45,3 +45,19 @@ export const create = (user: user): Promise<string> => {
       })
   })
 }
+
+export const remove = (id: string): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const db = firebase.firestore()
+    db.collection('users')
+      .doc(id)
+      .delete()
+      .then(function () {
+        resolve(id)
+      })
+      .catch(function (error) {
+        console.error('Error deleting document: ', error)
+        reject(error.message)
+      })
+  })
+}

@@ -30,6 +30,9 @@ export default async function (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
+  if (req.method === 'DELETE') {
+    return await deleteData(req, res)
+  }
   if (req.method === 'POST') {
     return await post(req, res)
   }
