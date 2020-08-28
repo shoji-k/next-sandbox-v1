@@ -14,6 +14,9 @@ export default function UserList({
   startDeleting: (id: string) => void
 }): ReactElement {
   const click = async (id: string): void => {
+    console.log(id)
+  }
+  const clickDelete = async (id: string): void => {
     try {
       startDeleting(id)
       await callDelete(`/api/user/${id}`)
@@ -36,7 +39,13 @@ export default function UserList({
         }
         return (
           <li className="w-full" key={id} onClick={(): void => click(id)}>
-            {first} {middle} {last} {born}
+            {first} {middle} {last} {born}{' '}
+            <a
+              className="text-yellow-500"
+              onClick={(): void => clickDelete(id)}
+            >
+              delete
+            </a>
           </li>
         )
       })}
