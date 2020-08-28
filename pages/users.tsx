@@ -13,13 +13,24 @@ export default function Home({ users }: { users: user[] }): ReactElement {
     const newList = [...list, user]
     setList(newList)
   }
+  const startDeleting = (id: string): void => {
+    const newList = list.map((l) => {
+      if (l.id === id) {
+        return {
+          ...l, deleting: true
+        }
+      }
+      return l
+    })
+    setList(newList)
+  }
   const deleteUser = (id: string): void => {
-    const newList = list.filter(l => l.id !== id)
+    const newList = list.filter((l) => l.id !== id)
     setList(newList)
   }
 
   useEffect(() => {
-    setList(users.map(user => ({...user, deleting: false})))
+    setList(users.map((user) => ({ ...user, deleting: false })))
   }, [users])
 
   return (
@@ -29,7 +40,11 @@ export default function Home({ users }: { users: user[] }): ReactElement {
       </Head>
       <section className="mb-8">
         <p className="text-center">Lists</p>
-        <UserList users={list} deleteUser={deleteUser} />
+        <UserList
+          users={list}
+          deleteUser={deleteUser}
+          startDeleting={startDeleting}
+        />
       </section>
       <section>
         <p className="text-center">Add user</p>
@@ -43,7 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const users = await load()
   return {
     props: {
-      users
-    }
+      users,
+    },
   }
 }

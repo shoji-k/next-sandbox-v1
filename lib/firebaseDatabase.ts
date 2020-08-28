@@ -6,6 +6,7 @@ export type user = {
   middle?: string
   last?: string
   born?: string
+  deleting?: boolean
 }
 
 export const load = (): Promise<user[] | string> => {
