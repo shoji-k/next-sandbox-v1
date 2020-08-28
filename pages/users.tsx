@@ -19,7 +19,7 @@ export default function Home({ users }: { users: user[] }): ReactElement {
   }
 
   useEffect(() => {
-    setList(users)
+    setList(users.map(user => ({...user, deleting: false})))
   }, [users])
 
   return (

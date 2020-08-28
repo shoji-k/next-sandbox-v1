@@ -6,8 +6,8 @@ const deleteData = async (req: NextApiRequest, res: NextApiResponse): Promise<vo
 
   try {
     const removedId = await remove(id)
-    console.log(removedId)
     res.statusCode = 200
+    res.json({ data: { id: removedId } })
   } catch (e) {
     res.statusCode = 500
     console.log(e)
