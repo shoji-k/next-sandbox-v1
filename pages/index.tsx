@@ -51,18 +51,14 @@ export default function Home(): ReactElement {
           <Link href="/sample-page">
             <a className="card">
               <h3>Sample page &rarr;</h3>
-              <p>
-                sample page
-              </p>
+              <p>sample page</p>
             </a>
           </Link>
 
           <Link href="/form">
             <a className="card">
               <h3>Form sample &rarr;</h3>
-              <p>
-                form sample
-              </p>
+              <p>form sample</p>
             </a>
           </Link>
         </div>

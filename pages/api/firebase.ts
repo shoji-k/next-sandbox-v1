@@ -12,12 +12,15 @@ const get = (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   }
 }
 
-const post = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+const post = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   try {
     const params = JSON.parse(req.body)
     const id = await create(params)
     res.statusCode = 200
-    res.json({ data: { id: id} })
+    res.json({ data: { id: id } })
   } catch (e) {
     res.statusCode = 500
     console.log(e)

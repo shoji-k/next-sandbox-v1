@@ -1,8 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { update, remove } from '@/lib/firebaseDatabase'
 
-const updateData = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
-  const { query: { id } } = req
+const updateData = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
+  const {
+    query: { id },
+  } = req
   const params = JSON.parse(req.body)
 
   try {
@@ -15,8 +20,13 @@ const updateData = async (req: NextApiRequest, res: NextApiResponse): Promise<vo
     res.json({ errors: ['update error', e.message] })
   }
 }
-const deleteData = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
-  const { query: { id } } = req
+const deleteData = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
+  const {
+    query: { id },
+  } = req
 
   try {
     const removedId = await remove(id)

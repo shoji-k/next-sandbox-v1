@@ -64,7 +64,11 @@ export default function Home({ users }: { users: user[] }): ReactElement {
       </section>
       <section>
         <p className="text-center">Add user</p>
-        <UserForm selectedUser={selectedUser} addUser={addUser} updateUser={updateUser} />
+        <UserForm
+          selectedUser={selectedUser}
+          addUser={addUser}
+          updateUser={updateUser}
+        />
       </section>
     </Layout>
   )

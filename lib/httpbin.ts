@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 type Response = {
-  origin: string;
+  origin: string
 }
 
 export async function getIp(): Promise<Response> {

@@ -28,7 +28,7 @@ export async function fetchPut(
   return res.json()
 }
 
-export async function callDelete(url: string): Promise<{void}> {
+export async function callDelete(url: string): Promise<{ void }> {
   const res = await fetch(url, { method: 'DELETE' })
   return res.json()
 }

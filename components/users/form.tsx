@@ -27,7 +27,10 @@ export default function UserForm({
     if (userId) {
       try {
         setSaving(true)
-        const res = await fetchPut(`/api/user/${userId}`, { ...user, id: userId })
+        const res = await fetchPut(`/api/user/${userId}`, {
+          ...user,
+          id: userId,
+        })
         updateUser(res.data.user)
         setMessage('Updated')
         reset()
@@ -115,8 +118,7 @@ export default function UserForm({
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3 mb-6 md:mb-0">
-          <Submit disabled={saving} value={userId ? 'Update' : 'Save'} />
-          {' '}
+          <Submit disabled={saving} value={userId ? 'Update' : 'Save'} />{' '}
           {userId && <Clear onClick={clear} />}
         </div>
       </div>

@@ -2,12 +2,12 @@ import React, { ReactElement } from 'react'
 import classnames from 'classnames'
 
 type TextArguments = Readonly<{
-  id: string;
-  value?: string;
-  setText?: Function;
-  placeholder: string;
-  error?: boolean;
-  register: Function;
+  id: string
+  value?: string
+  setText?: Function
+  placeholder: string
+  error?: boolean
+  register: Function
 }>
 
 export default function Text({
