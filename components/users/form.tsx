@@ -25,13 +25,20 @@ export default function UserForm({
   >()
   const onSubmit = async (user: user): Promise<void> => {
     if (userId) {
-      const res = await fetchPut(`/api/user/${userId}`, { ...user, id: userId })
-      console.log('put', res)
-      updateUser(res.data.user)
-      setMessage('Updated')
-      reset()
-      setUserId(null)
-      return
+      try {
+        setSaving(true)
+        const res = await fetchPut(`/api/user/${userId}`, { ...user, id: userId })
+        updateUser(res.data.user)
+        setMessage('Updated')
+        reset()
+        setUserId(null)
+        return
+      } catch (e) {
+        console.log(e)
+        alert('Update errors happen')
+      } finally {
+        setSaving(false)
+      }
     }
     try {
       setSaving(true)
@@ -58,7 +65,7 @@ export default function UserForm({
   }
 
   React.useEffect(() => {
-    if (selectedUser) {
+    if (Object.keys(selectedUser).length !== 0) {
       setUserId(selectedUser.id)
       set('first', selectedUser.first)
       set('middle', selectedUser.middle)

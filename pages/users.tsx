@@ -12,7 +12,6 @@ export default function Home({ users }: { users: user[] }): ReactElement {
 
   const selectUser = (id: string): void => {
     const user = list.find((l) => l.id === id)
-    console.log(id, user)
     setSelected(user)
   }
   const addUser = (user: user): void => {
