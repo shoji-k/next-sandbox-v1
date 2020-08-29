@@ -4,6 +4,7 @@ import { fetchPost, fetchPut } from '@/lib/fetch'
 import { user } from '@/lib/firebaseDatabase'
 import TextLabel from '@/components/organisms/sample-form/TextLabel'
 import { Alert } from '@/components/atoms/Alert'
+import { Clear } from '@/components/atoms/Clear'
 import { Submit } from '@/components/atoms/Submit'
 import { Toast } from '@/components/atoms/Toast'
 
@@ -45,11 +46,9 @@ export default function UserForm({
       setSaving(false)
     }
   }
-  const click = (): void => {
-    setValue('first', 'Hopper', {
-      shouldValidate: true,
-      shouldDirty: true,
-    })
+  const clear = (): void => {
+    reset()
+    setUserId(null)
   }
   const set = (key: string, value: string): void => {
     setValue(key, value, {
@@ -110,6 +109,8 @@ export default function UserForm({
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3 mb-6 md:mb-0">
           <Submit disabled={saving} value={userId ? 'Update' : 'Save'} />
+          {' '}
+          {userId && <Clear onClick={clear} />}
         </div>
       </div>
       {message ? <Toast message={message} /> : null}
