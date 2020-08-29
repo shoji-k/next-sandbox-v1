@@ -8,7 +8,13 @@ import { GetStaticProps } from 'next'
 
 export default function Home({ users }: { users: user[] }): ReactElement {
   const [list, setList] = useState([])
+  const [selectedUser, setSelected] = useState({})
 
+  const selectUser = (id: string): void => {
+    const user = list.find(l => l.id === id)
+    console.log(id, user)
+    setSelected(user)
+  }
   const addUser = (user: user): void => {
     const newList = [...list, user]
     setList(newList)
@@ -42,13 +48,14 @@ export default function Home({ users }: { users: user[] }): ReactElement {
         <p className="text-center">Lists</p>
         <UserList
           users={list}
+          selectUser={selectUser}
           deleteUser={deleteUser}
           startDeleting={startDeleting}
         />
       </section>
       <section>
         <p className="text-center">Add user</p>
-        <UserForm addUser={addUser} />
+        <UserForm selectedUser={selectedUser} addUser={addUser} />
       </section>
     </Layout>
   )

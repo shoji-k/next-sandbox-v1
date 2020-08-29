@@ -1,15 +1,22 @@
 import React, { useState, ReactElement } from 'react'
 import { useForm } from 'react-hook-form'
 import { fetchPost } from '@/lib/fetch'
+import { user } from '@/lib/firebaseDatabase'
 import TextLabel from '@/components/organisms/sample-form/TextLabel'
 import { Alert } from '@/components/atoms/Alert'
 import { Submit } from '@/components/atoms/Submit'
 import { Toast } from '@/components/atoms/Toast'
 
-export default function UserForm({ addUser } : { addUser: Function }): ReactElement {
+export default function UserForm({
+  addUser,
+  selectedUser,
+}: {
+  addUser: Function,
+  selectedUser: user
+}): ReactElement {
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
-  const { register, errors, handleSubmit, reset } = useForm<FormData>()
+  const { register, errors, handleSubmit, reset, setValue } = useForm<FormData>()
   const onSubmit = async (user: user): Promise<void> => {
     try {
       setSaving(true)
@@ -24,6 +31,26 @@ export default function UserForm({ addUser } : { addUser: Function }): ReactElem
       setSaving(false)
     }
   }
+  const click = (): void => {
+    setValue("first", "Hopper", {
+      shouldValidate: true,
+      shouldDirty: true
+    })
+  }
+  const set = (key: string, value: string): void => {
+    setValue(key, value, {
+      shouldValidate: true,
+      shouldDirty: true
+    })
+  }
+
+  React.useEffect(() => {
+    if (selectedUser) {
+      set('first', selectedUser.first)
+      set('middle', selectedUser.middle)
+      set('last', selectedUser.last)
+    }
+  }, [selectedUser])
 
   return (
     <form
@@ -48,7 +75,9 @@ export default function UserForm({ addUser } : { addUser: Function }): ReactElem
             placeholder="middle name"
             register={register}
             error={!!errors['middle']}
-          >&nbsp;</TextLabel>
+          >
+            &nbsp;
+          </TextLabel>
           <Alert error={errors['middle']?.message} />
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -57,7 +86,9 @@ export default function UserForm({ addUser } : { addUser: Function }): ReactElem
             placeholder="last name"
             register={register}
             error={!!errors['last']}
-          >&nbsp;</TextLabel>
+          >
+            &nbsp;
+          </TextLabel>
           <Alert error={errors['last']?.message} />
         </div>
       </div>
@@ -65,8 +96,11 @@ export default function UserForm({ addUser } : { addUser: Function }): ReactElem
         <div className="w-full px-3 mb-6 md:mb-0">
           <Submit disabled={saving} />
         </div>
+        <div className="w-full px-3 mb-6 md:mb-0" onClick={click}>
+          test
+        </div>
       </div>
-      { message ? <Toast message={'hey toast'} /> : null }
+      {message ? <Toast message={message} /> : null}
     </form>
   )
 }
