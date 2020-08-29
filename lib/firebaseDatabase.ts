@@ -47,6 +47,23 @@ export const create = (user: user): Promise<string> => {
   })
 }
 
+export const update = (user: user): Promise<user> => {
+  console.log('user', user.id)
+  return new Promise((resolve, reject) => {
+    const db = firebase.firestore()
+    db.collection('users')
+      .doc(user.id)
+      .set(user)
+      .then(function () {
+        resolve(user)
+      })
+      .catch(function (error) {
+        console.error('Error updating document: ', error)
+        reject(error.message)
+      })
+  })
+}
+
 export const remove = (id: string): Promise<string> => {
   return new Promise((resolve, reject) => {
     const db = firebase.firestore()

@@ -17,6 +17,17 @@ export async function fetchPost(
   return res.json()
 }
 
+export async function fetchPut(
+  url: string,
+  data: {}
+): Promise<{ data: { id: string } }> {
+  const res = await fetch(url, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  })
+  return res.json()
+}
+
 export async function callDelete(url: string): Promise<{void}> {
   const res = await fetch(url, { method: 'DELETE' })
   return res.json()

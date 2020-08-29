@@ -11,7 +11,7 @@ export default function Home({ users }: { users: user[] }): ReactElement {
   const [selectedUser, setSelected] = useState({})
 
   const selectUser = (id: string): void => {
-    const user = list.find(l => l.id === id)
+    const user = list.find((l) => l.id === id)
     console.log(id, user)
     setSelected(user)
   }
@@ -19,11 +19,21 @@ export default function Home({ users }: { users: user[] }): ReactElement {
     const newList = [...list, user]
     setList(newList)
   }
+  const updateUser = (user: user): void => {
+    const newList = list.map((l) => {
+      if (l.id === user.id) {
+        return user
+      }
+      return l
+    })
+    setList(newList)
+  }
   const startDeleting = (id: string): void => {
     const newList = list.map((l) => {
       if (l.id === id) {
         return {
-          ...l, deleting: true
+          ...l,
+          deleting: true,
         }
       }
       return l
@@ -55,7 +65,7 @@ export default function Home({ users }: { users: user[] }): ReactElement {
       </section>
       <section>
         <p className="text-center">Add user</p>
-        <UserForm selectedUser={selectedUser} addUser={addUser} />
+        <UserForm selectedUser={selectedUser} addUser={addUser} updateUser={updateUser} />
       </section>
     </Layout>
   )

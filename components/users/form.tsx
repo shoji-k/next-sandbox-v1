@@ -1,6 +1,6 @@
 import React, { useState, ReactElement } from 'react'
 import { useForm } from 'react-hook-form'
-import { fetchPost } from '@/lib/fetch'
+import { fetchPost, fetchPut } from '@/lib/fetch'
 import { user } from '@/lib/firebaseDatabase'
 import TextLabel from '@/components/organisms/sample-form/TextLabel'
 import { Alert } from '@/components/atoms/Alert'
@@ -10,14 +10,26 @@ import { Toast } from '@/components/atoms/Toast'
 export default function UserForm({
   addUser,
   selectedUser,
+  updateUser,
 }: {
-  addUser: Function,
+  addUser:  (user: user) => void
   selectedUser: user
+  updateUser: (user: user) => void
 }): ReactElement {
+  const [userId, setUserId] = useState(null)
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
   const { register, errors, handleSubmit, reset, setValue } = useForm<FormData>()
   const onSubmit = async (user: user): Promise<void> => {
+    if (userId) {
+      const res = await fetchPut(`/api/user/${userId}`, { ...user, id: userId })
+      console.log('put', res)
+      updateUser(res.data.user)
+      setMessage('Updated')
+      reset()
+      setUserId(null)
+      return
+    }
     try {
       setSaving(true)
       const res = await fetchPost('/api/firebase', user)
@@ -46,6 +58,7 @@ export default function UserForm({
 
   React.useEffect(() => {
     if (selectedUser) {
+      setUserId(selectedUser.id)
       set('first', selectedUser.first)
       set('middle', selectedUser.middle)
       set('last', selectedUser.last)
