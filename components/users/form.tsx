@@ -12,14 +12,16 @@ export default function UserForm({
   selectedUser,
   updateUser,
 }: {
-  addUser:  (user: user) => void
+  addUser: (user: user) => void
   selectedUser: user
   updateUser: (user: user) => void
 }): ReactElement {
   const [userId, setUserId] = useState(null)
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
-  const { register, errors, handleSubmit, reset, setValue } = useForm<FormData>()
+  const { register, errors, handleSubmit, reset, setValue } = useForm<
+    FormData
+  >()
   const onSubmit = async (user: user): Promise<void> => {
     if (userId) {
       const res = await fetchPut(`/api/user/${userId}`, { ...user, id: userId })
@@ -44,15 +46,15 @@ export default function UserForm({
     }
   }
   const click = (): void => {
-    setValue("first", "Hopper", {
+    setValue('first', 'Hopper', {
       shouldValidate: true,
-      shouldDirty: true
+      shouldDirty: true,
     })
   }
   const set = (key: string, value: string): void => {
     setValue(key, value, {
       shouldValidate: true,
-      shouldDirty: true
+      shouldDirty: true,
     })
   }
 
@@ -107,10 +109,7 @@ export default function UserForm({
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full px-3 mb-6 md:mb-0">
-          <Submit disabled={saving} />
-        </div>
-        <div className="w-full px-3 mb-6 md:mb-0" onClick={click}>
-          test
+          <Submit disabled={saving} value={userId ? 'Update' : 'Save'} />
         </div>
       </div>
       {message ? <Toast message={message} /> : null}
