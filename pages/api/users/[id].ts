@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { update, remove } from '@/lib/firebaseDatabase'
+import { update, remove } from '@/lib/firebase/users'
 
 const updateData = async (
   req: NextApiRequest,

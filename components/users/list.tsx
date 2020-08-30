@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { callDelete } from '@/lib/fetch'
-import { user } from '@/lib/firebaseDatabase'
+import { user } from '@/lib/firebase/users'
 
 type userFunction = (id: string) => void
 
@@ -21,7 +21,7 @@ export default function UserList({
   const clickDelete = async (id: string): void => {
     try {
       startDeleting(id)
-      await callDelete(`/api/user/${id}`)
+      await callDelete(`/api/users/${id}`)
       deleteUser(id)
     } catch (e) {
       console.log(e)

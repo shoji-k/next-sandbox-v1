@@ -1,7 +1,7 @@
 import React, { useState, ReactElement } from 'react'
 import { useForm } from 'react-hook-form'
 import { fetchPost, fetchPut } from '@/lib/fetch'
-import { user } from '@/lib/firebaseDatabase'
+import { user } from '@/lib/firebase/users'
 import TextLabel from '@/components/organisms/sample-form/TextLabel'
 import { Alert } from '@/components/atoms/Alert'
 import { Clear } from '@/components/atoms/Clear'
@@ -32,7 +32,7 @@ export default function UserForm({
     if (userId) {
       try {
         setSaving(true)
-        const res = await fetchPut(`/api/user/${userId}`, {
+        const res = await fetchPut(`/api/users/${userId}`, {
           ...user,
           id: userId,
         })
@@ -50,7 +50,7 @@ export default function UserForm({
     }
     try {
       setSaving(true)
-      const res = await fetchPost('/api/firebase', user)
+      const res = await fetchPost('/api/users', user)
       addUser({ id: res.data.id, ...user })
       showToast('Saved')
       reset()

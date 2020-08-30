@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { load, create } from '@/lib/firebaseDatabase'
+import { load, create } from '@/lib/firebase/users'
 
 const get = (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   try {
