@@ -23,6 +23,11 @@ export default function UserForm({
   const { register, errors, handleSubmit, reset, setValue } = useForm<
     FormData
   >()
+  const showToast = (message: string):void => {
+    setMessage(message)
+    setTimeout(setMessage, 2000, '')
+  }
+
   const onSubmit = async (user: user): Promise<void> => {
     if (userId) {
       try {
@@ -32,7 +37,7 @@ export default function UserForm({
           id: userId,
         })
         updateUser(res.data.user)
-        setMessage('Updated')
+        showToast('Updated')
         reset()
         setUserId(null)
         return
@@ -47,7 +52,7 @@ export default function UserForm({
       setSaving(true)
       const res = await fetchPost('/api/firebase', user)
       addUser({ id: res.data.id, ...user })
-      setMessage('Saved')
+      showToast('Saved')
       reset()
     } catch (e) {
       console.log(e)
