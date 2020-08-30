@@ -1,4 +1,5 @@
 import fetch from 'node-fetch'
+import { user } from '@/lib/firebase/users'
 
 /* eslint @typescript-eslint/no-explicit-any: 0 */
 export default async function fetchedJson(url: string): Promise<any> {
@@ -20,7 +21,7 @@ export async function fetchPost(
 export async function fetchPut(
   url: string,
   data: {}
-): Promise<{ data: { id: string } }> {
+): Promise<{ data: { user: user } }> {
   const res = await fetch(url, {
     method: 'PUT',
     body: JSON.stringify(data),

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { load, create } from '@/lib/firebase/users'
 
-const get = (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+const get = (_req: NextApiRequest, res: NextApiResponse): void => {
   try {
     const users = load()
     res.statusCode = 200
@@ -33,11 +33,8 @@ export default async function (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
-  if (req.method === 'DELETE') {
-    return await deleteData(req, res)
-  }
   if (req.method === 'POST') {
     return await post(req, res)
   }
-  await get(req, res)
+  return await get(req, res)
 }

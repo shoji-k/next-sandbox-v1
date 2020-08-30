@@ -29,7 +29,8 @@ const deleteData = async (
   } = req
 
   try {
-    const removedId = await remove(id)
+    const tmpId: string = Array.isArray(id) ? id[0] : id
+    const removedId = await remove(tmpId)
     res.statusCode = 200
     res.json({ data: { id: removedId } })
   } catch (e) {

@@ -1,7 +1,7 @@
 import firebase from '@/lib/firebase'
 
 export type user = {
-  id?: number
+  id?: string
   first?: string
   middle?: string
   last?: string

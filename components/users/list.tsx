@@ -15,10 +15,10 @@ export default function UserList({
   deleteUser: userFunction
   startDeleting: userFunction
 }): ReactElement {
-  const click = async (id: string): void => {
+  const click = async (id: string): Promise<void> => {
     selectUser(id)
   }
-  const clickDelete = async (id: string): void => {
+  const clickDelete = async (id: string): Promise<void> => {
     try {
       startDeleting(id)
       await callDelete(`/api/users/${id}`)
@@ -40,11 +40,11 @@ export default function UserList({
           )
         }
         return (
-          <li className="w-full" key={id} onClick={(): void => click(id)}>
+          <li className="w-full" key={id} onClick={(): Promise<void> => click(id)}>
             {first} {middle} {last} {born}{' '}
             <a
               className="text-yellow-500"
-              onClick={(): void => clickDelete(id)}
+              onClick={(): Promise<void> => clickDelete(id)}
             >
               delete
             </a>
