@@ -13,7 +13,7 @@ export default function SamplePage({ ip }: { ip: string }): ReactElement {
 
       <div className="bg-gray-100 p-8">
         <h2 className="pb-6 text-2xl font-bold">sample page</h2>
-        <div>This page is build on { ip }!</div>
+        <div>This page is build on {ip}!</div>
         <Ip />
       </div>
 
@@ -24,15 +24,15 @@ export default function SamplePage({ ip }: { ip: string }): ReactElement {
 
 type IpResponse = {
   props: {
-    ip: string;
-  };
+    ip: string
+  }
 }
 
 export async function getStaticProps(): Promise<IpResponse> {
   const json = await getIp()
   return {
     props: {
-      ip: json.origin
-    }
+      ip: json.origin,
+    },
   }
 }

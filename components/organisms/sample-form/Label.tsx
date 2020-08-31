@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 
 type LabelArguments = Readonly<{
-  inputId: string;
-  children: React.ReactNode;
+  inputId: string
+  children: React.ReactNode
 }>
 
 export default function Label({

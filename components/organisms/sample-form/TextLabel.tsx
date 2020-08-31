@@ -3,11 +3,11 @@ import Text from './Text'
 import Label from './Label'
 
 type TextLabelArguments = Readonly<{
-  id: string;
-  placeholder: string;
-  children: string;
-  error: boolean;
-  register: Function;
+  id: string
+  placeholder: string
+  children: string
+  error: boolean
+  register: Function
 }>
 
 export default function TextLabel({

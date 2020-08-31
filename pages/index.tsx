@@ -50,19 +50,29 @@ export default function Home(): ReactElement {
 
           <Link href="/sample-page">
             <a className="card">
-              <h3>Sample page &rarr;</h3>
-              <p>
-                sample page
-              </p>
+              <h3>Sample page</h3>
+              <p>two types of calling api</p>
             </a>
           </Link>
 
           <Link href="/form">
             <a className="card">
-              <h3>Form sample &rarr;</h3>
-              <p>
-                form sample
-              </p>
+              <h3>Form sample</h3>
+              <p>form sample</p>
+            </a>
+          </Link>
+
+          <Link href="/posts">
+            <a className="card">
+              <h3>Blog sample</h3>
+              <p>show markdown posts</p>
+            </a>
+          </Link>
+
+          <Link href="/users">
+            <a className="card">
+              <h3>Firebase sample</h3>
+              <p>show users</p>
             </a>
           </Link>
         </div>

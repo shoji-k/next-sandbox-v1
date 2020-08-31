@@ -16,7 +16,9 @@ function Layout({
       {children}
       {!home && (
         <div className="pt-6 text-indigo-500 text-center">
-          <Link href="/"><a>back to top</a></Link>
+          <Link href="/">
+            <a>back to top</a>
+          </Link>
         </div>
       )}
     </div>
