@@ -5,8 +5,10 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
+  DocumentInitialProps,
 } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/core/styles'
+import { StylesProviderProps } from '@material-ui/styles/StylesProvider'
 import theme from '../src/theme'
 
 export default class MyDocument extends Document {
@@ -32,7 +34,9 @@ export default class MyDocument extends Document {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with server-side generation (SSG).
-MyDocument.getInitialProps = async (ctx: DocumentContext) => {
+MyDocument.getInitialProps = async (
+  ctx: DocumentContext
+): Promise<DocumentInitialProps> => {
   // Resolution order
   //
   // On the server:
@@ -59,9 +63,13 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   const sheets = new ServerStyleSheets()
   const originalRenderPage = ctx.renderPage
 
-  ctx.renderPage = () =>
+  // TODO: I have no idea to set RenderPage
+  // ctx.renderPage = (): RenderPage =>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ctx.renderPage = (): any =>
     originalRenderPage({
-      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+      enhanceApp: (App) => (props): React.ReactElement<StylesProviderProps> =>
+        sheets.collect(<App {...props} />),
     })
 
   const initialProps = await Document.getInitialProps(ctx)
