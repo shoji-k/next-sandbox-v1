@@ -3,8 +3,13 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Box, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles({
+  cell: {
+    width: '14.285%',
+    textAlign: 'center',
+  },
   time: {
     width: '100px',
+    textAlign: 'center',
   },
 })
 
@@ -22,8 +27,9 @@ function HeaderTimeCell({
 }
 
 function HeaderCell({ children }: { children: React.ReactNode }): ReactElement {
+  const classes = useStyles()
   return (
-    <Box p={2} bgcolor="grey.300" flexGrow={1} flexShrink={1} border={1}>
+    <Box className={classes.cell} p={2} bgcolor="grey.300" border={1}>
       {children}
     </Box>
   )
@@ -38,26 +44,55 @@ function TimeCell({ children }: { children: React.ReactNode }): ReactElement {
   )
 }
 
-function Cell({
-  children,
-  staffs,
-}: {
-  children: React.ReactNode
-  staffs?: string[]
-}): ReactElement {
+function Cell({ staffs }: { staffs?: string[] }): ReactElement {
+  const classes = useStyles()
+
+  let click = (): void => {
+    alert('select')
+  }
+  let mark = ''
+  if (staffs.length >= 2) {
+    mark = '◎'
+  } else if (staffs.length >= 1) {
+    mark = '○'
+  } else {
+    mark = '☓'
+    click = null
+  }
+
   return (
-    <Box p={2} bgcolor="grey.100" flexGrow={1} flexShrink={1} border={1}>
-      {children}
-      {staffs && (staffs.length > 0 ? '○' : '☓')}
+    <Box className={classes.cell} p={2} m="auto" bgcolor="grey.100" border={1} onClick={click}>
+      {mark}
     </Box>
   )
 }
 
 export default function Calendar(): ReactElement {
   const times = [
-    { time: '10:00', staffs: ['sato', 'tanaka'] },
-    { time: '11:00', staffs: [] },
-    { time: '12:00', staffs: ['sato'] },
+    {
+      time: '10:00',
+      staffs: [
+        ['sato', 'tanaka'],
+        [],
+        ['sato'],
+        ['sato', 'tanaka'],
+        [],
+        ['sato'],
+        ['sato', 'tanaka'],
+      ],
+    },
+    {
+      time: '11:00',
+      staffs: [
+        [],
+        ['sato'],
+        ['sato', 'tanaka'],
+        [],
+        ['sato'],
+        ['sato', 'tanaka'],
+        ['sato', 'tanaka'],
+      ],
+    },
   ]
 
   return (
@@ -83,13 +118,9 @@ export default function Calendar(): ReactElement {
       {times.map((one) => {
         return (
           <Box display="flex" flexWrap="nowrap" key={one.time}>
-            <Cell staffs={one.staffs}></Cell>
-            <Cell staffs={one.staffs}></Cell>
-            <Cell staffs={one.staffs}></Cell>
-            <Cell staffs={one.staffs}></Cell>
-            <Cell staffs={one.staffs}></Cell>
-            <Cell staffs={one.staffs}></Cell>
-            <Cell staffs={one.staffs}></Cell>
+            {one.staffs.map((s, i) => {
+              return <Cell key={i} staffs={s} />
+            })}
             <TimeCell>{one.time}</TimeCell>
           </Box>
         )
