@@ -1,11 +1,28 @@
 import React, { ReactElement } from 'react'
 import { useForm } from 'react-hook-form'
-import { Box, Button, Grid, TextField, Typography } from '@material-ui/core'
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert'
+import {
+  Box,
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  Snackbar,
+} from '@material-ui/core'
+
+function Alert(props: AlertProps): ReactElement {
+  return <MuiAlert elevation={6} variant="filled" {...props} />
+}
 
 export default function MaterialUi(): ReactElement {
+  const [open, setOpen] = React.useState(false)
   const { register, errors, handleSubmit } = useForm<FormData>()
   const onSubmit = async (data: {}): Promise<void> => {
     await console.log('submit', data, errors)
+    setOpen(true)
+  }
+  const handleClose = (): void => {
+    setOpen(false)
   }
 
   return (
@@ -80,6 +97,11 @@ export default function MaterialUi(): ReactElement {
           </Grid>
         </Grid>
       </form>
+      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          成功しました
+        </Alert>
+      </Snackbar>
     </Box>
   )
 }
