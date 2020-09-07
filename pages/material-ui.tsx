@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
+import Form from '@/components/organisms/material-ui/form'
 
 export default function MaterialUi(): ReactElement {
   return (
@@ -11,6 +12,8 @@ export default function MaterialUi(): ReactElement {
           Material UI Page
         </Typography>
         <Box my={1}>This is top page.</Box>
+
+        <Form />
       </Box>
     </Container>
   )
