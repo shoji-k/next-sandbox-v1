@@ -10,7 +10,7 @@ export default function MaterialUi(): ReactElement {
         <Typography variant="h4" component="h1" gutterBottom>
           Material UI Page
         </Typography>
-        <Box my={4}>hey</Box>
+        <Box my={1}>This is top page.</Box>
       </Box>
     </Container>
   )
