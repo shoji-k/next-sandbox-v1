@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
-import Form from '@/components/organisms/material-ui/form'
+import Form from '@/components/organisms/material-ui/Form'
 
 export default function MaterialUi(): ReactElement {
   return (
