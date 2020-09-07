@@ -6,10 +6,12 @@ import Typography from '@material-ui/core/Typography'
 export default function MaterialUi(): ReactElement {
   return (
     <Container maxWidth="sm">
-      <Typography variant="h4" component="h1" gutterBottom>
-        Material UI Page
-      </Typography>
-      <Box my={4}>hey</Box>
+      <Box pt={2}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Material UI Page
+        </Typography>
+        <Box my={4}>hey</Box>
+      </Box>
     </Container>
   )
 }
