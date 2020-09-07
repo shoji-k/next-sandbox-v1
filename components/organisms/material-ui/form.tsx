@@ -14,7 +14,7 @@ function Alert(props: AlertProps): ReactElement {
   return <MuiAlert elevation={6} variant="filled" {...props} />
 }
 
-export default function MaterialUi(): ReactElement {
+export default function Form(): ReactElement {
   const [open, setOpen] = React.useState(false)
   const { register, errors, handleSubmit } = useForm<FormData>()
   const onSubmit = async (data: {}): Promise<void> => {
