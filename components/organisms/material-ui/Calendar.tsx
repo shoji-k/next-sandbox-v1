@@ -1,6 +1,11 @@
 import React, { ReactElement } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box, Typography } from '@material-ui/core'
+import {
+  Clear,
+  ChangeHistory,
+  RadioButtonUnchecked,
+} from '@material-ui/icons'
 
 const useStyles = makeStyles({
   cell: {
@@ -47,22 +52,22 @@ function TimeCell({ children }: { children: React.ReactNode }): ReactElement {
 function Cell({ staffs }: { staffs?: string[] }): ReactElement {
   const classes = useStyles()
 
-  let click = (): void => {
+  const click = (): void => {
     alert('select')
-  }
-  let mark = ''
-  if (staffs.length >= 2) {
-    mark = '◎'
-  } else if (staffs.length >= 1) {
-    mark = '○'
-  } else {
-    mark = '☓'
-    click = null
   }
 
   return (
-    <Box className={classes.cell} p={2} m="auto" bgcolor="grey.100" border={1} onClick={click}>
-      {mark}
+    <Box
+      className={classes.cell}
+      p={2}
+      m="auto"
+      bgcolor="grey.100"
+      border={1}
+      onClick={click}
+    >
+      {staffs.length >= 2 && <RadioButtonUnchecked onClick={click} />}
+      {staffs.length == 1 && <ChangeHistory onClick={click} />}
+      {staffs.length == 0 && <Clear />}
     </Box>
   )
 }
