@@ -121,7 +121,7 @@ export default function Calendar(): ReactElement {
         <HeaderCell>24</HeaderCell>
         <HeaderCell>25</HeaderCell>
         <HeaderCell>26</HeaderCell>
-        <HeaderTimeCell></HeaderTimeCell>
+        <HeaderTimeCell>&nbsp;</HeaderTimeCell>
       </Box>
       {times.map((one) => {
         return (
