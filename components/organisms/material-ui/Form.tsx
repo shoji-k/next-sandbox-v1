@@ -16,7 +16,9 @@ function Alert(props: AlertProps): ReactElement {
 
 export default function Form(): ReactElement {
   const [open, setOpen] = React.useState(false)
-  const { register, errors, handleSubmit } = useForm<FormData>()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { register, errors, handleSubmit } = useForm<any>()
+  // const { register, errors, handleSubmit } = useForm<FormData>()
   const onSubmit = async (data: {}): Promise<void> => {
     await console.log('submit', data, errors)
     setOpen(true)

@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 function HeaderTimeCell({
   children,
 }: {
-  children: React.ReactNode
+  children?: React.ReactNode
 }): ReactElement {
   const classes = useStyles()
   return (
