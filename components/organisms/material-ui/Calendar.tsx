@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
-import { addMinutes, getHours, format } from 'date-fns'
+import { addMinutes, getHours, format, isEqual, addDays } from 'date-fns'
 import { makeStyles } from '@material-ui/core/styles'
-import { Box, Typography } from '@material-ui/core'
+import { Box, Tooltip, Typography } from '@material-ui/core'
 import { Clear, ChangeHistory, RadioButtonUnchecked } from '@material-ui/icons'
 
 const useStyles = makeStyles({
@@ -55,9 +55,17 @@ function Cell({ staffs }: { staffs?: string[] }): ReactElement {
 
   let mark = null
   if (staffs.length >= 2) {
-    mark = <RadioButtonUnchecked onClick={click} />
+    mark = (
+      <Tooltip title={staffs.join(',')}>
+        <RadioButtonUnchecked onClick={click} />
+      </Tooltip>
+    )
   } else if (staffs.length >= 1) {
-    mark = <ChangeHistory onClick={click} />
+    mark = (
+      <Tooltip title={staffs[0]}>
+        <ChangeHistory onClick={click} />
+      </Tooltip>
+    )
   } else {
     mark = <Clear />
   }
@@ -82,12 +90,40 @@ const end = 18
 const frame = 25
 const gap = 10
 
+const reservations = [
+  {
+    name: 'taro',
+    startAt: new Date(2020, 9, 13, 14, 30),
+    endAt: new Date(2020, 9, 13, 14, 55),
+  },
+  {
+    name: 'jiro',
+    startAt: new Date(2020, 9, 13, 14, 30),
+    endAt: new Date(2020, 9, 13, 14, 55),
+  },
+  {
+    name: 'taro',
+    startAt: new Date(2020, 9, 14, 14, 30),
+    endAt: new Date(2020, 9, 14, 14, 55),
+  },
+]
+
 let time = new Date(2020, 9, 12, start, 0, 0)
 while (getHours(time) < end) {
+  const staffs = []
+  for (let i = 0; i < 7; i++) {
+    const shift = addDays(time, i)
+    const arr = reservations
+      .filter((r) => {
+        return isEqual(r.startAt, shift)
+      })
+      .map((r) => r.name)
+    staffs.push(arr)
+  }
   times.push({
     time:
       format(time, 'HH:mm') + '-' + format(addMinutes(time, frame), 'HH:mm'),
-    staffs: [[], [], [], [], [], [], []],
+    staffs: staffs,
   })
   time = addMinutes(time, frame + gap)
 }
