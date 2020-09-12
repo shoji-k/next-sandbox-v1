@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react'
+import { addMinutes, getHours, format } from 'date-fns'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box, Typography } from '@material-ui/core'
 import { Clear, ChangeHistory, RadioButtonUnchecked } from '@material-ui/icons'
@@ -9,7 +10,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
   },
   time: {
-    width: '100px',
+    width: '200px',
     textAlign: 'center',
   },
 })
@@ -75,34 +76,23 @@ function Cell({ staffs }: { staffs?: string[] }): ReactElement {
   )
 }
 
-export default function Calendar(): ReactElement {
-  const times = [
-    {
-      time: '10:00',
-      staffs: [
-        ['sato', 'tanaka'],
-        [],
-        ['sato'],
-        ['sato', 'tanaka'],
-        [],
-        ['sato'],
-        ['sato', 'tanaka'],
-      ],
-    },
-    {
-      time: '11:00',
-      staffs: [
-        [],
-        ['sato'],
-        ['sato', 'tanaka'],
-        [],
-        ['sato'],
-        ['sato', 'tanaka'],
-        ['sato', 'tanaka'],
-      ],
-    },
-  ]
+const times = []
+const start = 11
+const end = 18
+const frame = 25
+const gap = 10
 
+let time = new Date(2020, 9, 12, start, 0, 0)
+while (getHours(time) < end) {
+  times.push({
+    time:
+      format(time, 'HH:mm') + '-' + format(addMinutes(time, frame), 'HH:mm'),
+    staffs: [[], [], [], [], [], [], []],
+  })
+  time = addMinutes(time, frame + gap)
+}
+
+export default function Calendar(): ReactElement {
   return (
     <Box pt={1} bgcolor="white">
       <Typography variant="h5" component="h2" gutterBottom>
