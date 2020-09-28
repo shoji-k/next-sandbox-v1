@@ -14,7 +14,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
-    "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-cypress": "^2.11.2",
     "firebase": "^7.21.0",
     "gray-matter": "^4.0.2",
     "next": "9.5.3",
