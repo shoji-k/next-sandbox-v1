@@ -24,7 +24,7 @@
     "react-hook-form": "^6.9.2",
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
-    "swr": "^0.3.5"
+    "swr": "^0.3.6"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.10",
