@@ -21,7 +21,7 @@
     "node-fetch": "^2.6.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-hook-form": "^6.9.2",
+    "react-hook-form": "^6.9.4",
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
     "swr": "^0.3.6"
