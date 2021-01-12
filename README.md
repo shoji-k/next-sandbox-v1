@@ -6,6 +6,12 @@ This starts from default template.
 First, run the development server:
 
 ```bash
+vercel dev
+```
+
+or set up environments and run
+
+```bash
 npm run dev
 # or
 yarn dev
