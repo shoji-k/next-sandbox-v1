@@ -17,7 +17,7 @@
     "eslint-plugin-cypress": "^2.11.2",
     "firebase": "^8.2.10",
     "gray-matter": "^4.0.2",
-    "next": "10.0.7",
+    "next": "10.0.8",
     "node-fetch": "^2.6.1",
     "nprogress": "^0.2.0",
     "react": "17.0.1",
