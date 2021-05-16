@@ -30,7 +30,7 @@ export default function Text({
         name={id}
         type="text"
         placeholder={placeholder}
-        ref={register({ required: 'This is required' })}
+        {...register(id, { required: 'This is required' })}
       />
     </>
   )

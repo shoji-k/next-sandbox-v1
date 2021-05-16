@@ -10,7 +10,11 @@ import { Submit } from '@/components/atoms/Submit'
 
 export default function SampleForm(): ReactElement {
   const [saving, setSaving] = useState(false)
-  const { register, errors, handleSubmit } = useForm<FormData>()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>()
   const onSubmit = async (data: {}): Promise<void> => {
     try {
       setSaving(true)
