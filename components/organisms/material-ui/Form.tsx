@@ -17,10 +17,13 @@ function Alert(props: AlertProps): ReactElement {
 export default function Form(): ReactElement {
   const [open, setOpen] = React.useState(false)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { register, errors, handleSubmit } = useForm<any>()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<any>()
   // const { register, errors, handleSubmit } = useForm<FormData>()
   const onSubmit = async (data: {}): Promise<void> => {
-    await console.log('submit', data, errors)
     setOpen(true)
   }
   const handleClose = (): void => {
@@ -44,7 +47,7 @@ export default function Form(): ReactElement {
               required
               error={!!errors.name}
               helperText={errors.name?.message}
-              inputRef={register({ required: '入力してください' })}
+              {...register('name', { required: '入力してください' })}
             />
           </Grid>
           <Grid item>
@@ -57,7 +60,7 @@ export default function Form(): ReactElement {
               required
               error={!!errors.tel}
               helperText={errors.tel?.message}
-              inputRef={register({ required: '入力してください' })}
+              {...register('tel', { required: '入力してください' })}
             />
           </Grid>
           <Grid item>
@@ -71,7 +74,7 @@ export default function Form(): ReactElement {
               placeholder="sample@sample.com"
               error={!!errors.email}
               helperText={errors.email?.message}
-              inputRef={register({
+              {...register('email', {
                 required: '入力してください',
                 pattern: {
                   value: /\S+@\S+\.\S+/,

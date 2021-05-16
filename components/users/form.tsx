@@ -20,10 +20,14 @@ export default function UserForm({
   const [userId, setUserId] = useState(null)
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
-  const { register, errors, handleSubmit, reset, setValue } = useForm<
-    FormData
-  >()
-  const showToast = (message: string):void => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    formState: { errors },
+  } = useForm<FormData>()
+  const showToast = (message: string): void => {
     setMessage(message)
     setTimeout(setMessage, 2000, '')
   }
@@ -65,7 +69,7 @@ export default function UserForm({
     reset()
     setUserId(null)
   }
-  const set = (key: string, value: string): void => {
+  const set = (key: any, value: string): void => {
     setValue(key, value, {
       shouldValidate: true,
       shouldDirty: true,
