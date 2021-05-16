@@ -27,7 +27,7 @@ export default function Password({
       name={id}
       type="password"
       placeholder={placeholder}
-      ref={register({
+      {...register(id, {
         required: 'This is required',
         minLength: { value: 8, message: 'Input more than 7 characters' },
       })}
