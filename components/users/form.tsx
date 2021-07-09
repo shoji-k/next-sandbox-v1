@@ -26,7 +26,7 @@ export default function UserForm({
     reset,
     setValue,
     formState: { errors },
-  } = useForm<FormData>()
+  } = useForm()
   const showToast = (message: string): void => {
     setMessage(message)
     setTimeout(setMessage, 2000, '')
@@ -69,7 +69,7 @@ export default function UserForm({
     reset()
     setUserId(null)
   }
-  const set = (key: any, value: string): void => {
+  const set = (key: 'first' | 'middle' | 'last', value: string): void => {
     setValue(key, value, {
       shouldValidate: true,
       shouldDirty: true,

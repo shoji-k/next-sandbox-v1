@@ -21,9 +21,9 @@ export default function Form(): ReactElement {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<any>()
+  } = useForm()
   // const { register, errors, handleSubmit } = useForm<FormData>()
-  const onSubmit = async (data: {}): Promise<void> => {
+  const onSubmit = async (): Promise<void> => {
     setOpen(true)
   }
   const handleClose = (): void => {

@@ -1,6 +1,7 @@
-import React, { ReactElement } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
+import React, { ReactElement } from 'react'
 
 export default function Home(): ReactElement {
   return (
@@ -85,7 +86,13 @@ export default function Home(): ReactElement {
           rel="noopener noreferrer"
         >
           Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+          <Image
+            src="/vercel.svg"
+            alt="Vercel Logo"
+            className="logo"
+            width={100}
+            height={100}
+          />
         </a>
       </footer>
 
