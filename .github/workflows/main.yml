@@ -17,6 +17,8 @@ jobs:
         run: yarn install
       - name: Lint check
         run: yarn lint
+      - name: Typescript check
+        run: yarn tslint
 
       - name: Cypress run
         uses: cypress-io/github-action@v2
