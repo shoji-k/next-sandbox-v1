@@ -1,22 +1,8 @@
 version: 2
 updates:
-- package-ecosystem: npm
+- package-ecosystem: yarn
   directory: "/"
   schedule:
     interval: weekly
     time: "20:00"
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: react-hook-form
-    versions:
-    - 7.0.1
-    - 7.0.7
-  - dependency-name: firebase
-    versions:
-    - 8.2.4
-    - 8.2.5
-    - 8.3.0
-  - dependency-name: cypress
-    versions:
-    - 6.3.0
-    - 6.7.0
