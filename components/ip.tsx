@@ -6,6 +6,8 @@ export default function Ip(): ReactElement {
   const url = 'https://httpbin.org/ip'
   const { data, error } = useSWR(url, fetch)
 
+  const hey = 'yo';
+
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
   return <div>Your ip address is {data.origin}!</div>
