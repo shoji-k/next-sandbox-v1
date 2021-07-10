@@ -4,7 +4,8 @@ name: CI
 on: [push]
 
 jobs:
-  cypress-run:
+  lint:
+    name: Lint check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -12,13 +13,15 @@ jobs:
         with:
           node-version: '14'
           cache: 'yarn'
+      - run: yarn install
+      - run: yarn lint
 
-      - name: yarn install
-        run: yarn install
-      - name: Lint check
-        run: yarn lint
-
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           start: yarn dev
+
