@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ext .js,.tsx,.ts ."
+    "lint": "next lint"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
