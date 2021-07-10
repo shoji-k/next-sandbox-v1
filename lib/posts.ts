@@ -6,8 +6,11 @@ import html from 'remark-html'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function getSortedPostsData() {
+export function getSortedPostsData(): {
+  date: string
+  title: string
+  id: string
+}[] {
   const fileNames = fs.readdirSync(postsDirectory)
   const allPostsData = fileNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, '')
@@ -30,8 +33,11 @@ export function getSortedPostsData() {
   })
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function getAllPostIds() {
+export function getAllPostIds(): {
+  params: {
+    id: string
+  }
+}[] {
   const fileNames = fs.readdirSync(postsDirectory)
   return fileNames.map((fileName) => {
     return {
@@ -42,8 +48,12 @@ export function getAllPostIds() {
   })
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export async function getPostData(id: string) {
+export async function getPostData(id: string): Promise<{
+  date: string
+  title: string
+  id: string
+  contentHtml: string
+}> {
   const fullPath = path.join(postsDirectory, `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const matterResult = matter(fileContents)

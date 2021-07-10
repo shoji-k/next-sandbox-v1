@@ -16,7 +16,7 @@ function Alert(props: AlertProps): ReactElement {
 
 export default function Form(): ReactElement {
   const [open, setOpen] = React.useState(false)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const {
     register,
     handleSubmit,

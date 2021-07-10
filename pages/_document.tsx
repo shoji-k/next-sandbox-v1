@@ -10,6 +10,7 @@ import Document, {
 import { ServerStyleSheets } from '@material-ui/core/styles'
 import { StylesProviderProps } from '@material-ui/styles/StylesProvider'
 import theme from '../src/theme'
+import { RenderPageResult } from 'next/dist/next-server/lib/utils'
 
 export default class MyDocument extends Document {
   render(): ReactElement {
@@ -63,13 +64,12 @@ MyDocument.getInitialProps = async (
   const sheets = new ServerStyleSheets()
   const originalRenderPage = ctx.renderPage
 
-  // TODO: I have no idea to set RenderPage
-  // ctx.renderPage = (): RenderPage =>
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ctx.renderPage = (): any =>
+  ctx.renderPage = (): RenderPageResult | Promise<RenderPageResult> =>
     originalRenderPage({
-      enhanceApp: (App) => (props): React.ReactElement<StylesProviderProps> =>
-        sheets.collect(<App {...props} />),
+      enhanceApp:
+        (App) =>
+        (props): React.ReactElement<StylesProviderProps> =>
+          sheets.collect(<App {...props} />),
     })
 
   const initialProps = await Document.getInitialProps(ctx)
