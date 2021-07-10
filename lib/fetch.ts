@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 import { user } from '@/lib/firebase/users'
 
 /* eslint @typescript-eslint/no-explicit-any: 0 */
-export default async function fetchedJson(url: string): Promise<any> {
+export default async function fetchedJson(url: string): Promise<unknown> {
   const res = await fetch(url)
   return res.json()
 }
