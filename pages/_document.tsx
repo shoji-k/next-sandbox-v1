@@ -10,7 +10,7 @@ import Document, {
 import { ServerStyleSheets } from '@material-ui/core/styles'
 import { StylesProviderProps } from '@material-ui/styles/StylesProvider'
 import theme from '../src/theme'
-import { RenderPageResult } from 'next/dist/next-server/lib/utils'
+import { RenderPageResult } from 'next/dist/shared/lib/utils'
 
 export default class MyDocument extends Document {
   render(): ReactElement {
