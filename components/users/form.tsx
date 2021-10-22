@@ -69,21 +69,21 @@ export default function UserForm({
     reset()
     setUserId(null)
   }
-  const set = (key: 'first' | 'middle' | 'last', value: string): void => {
-    setValue(key, value, {
-      shouldValidate: true,
-      shouldDirty: true,
-    })
-  }
 
   React.useEffect(() => {
+    const set = (key: 'first' | 'middle' | 'last', value: string): void => {
+      setValue(key, value, {
+        shouldValidate: true,
+        shouldDirty: true,
+      })
+    }
     if (Object.keys(selectedUser).length !== 0) {
       setUserId(selectedUser.id)
       set('first', selectedUser.first)
       set('middle', selectedUser.middle)
       set('last', selectedUser.last)
     }
-  }, [selectedUser])
+  }, [selectedUser, setValue])
 
   return (
     <form

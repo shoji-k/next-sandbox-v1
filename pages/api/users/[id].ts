@@ -40,10 +40,7 @@ const deleteData = async (
   }
 }
 
-export default async function (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
+async function api(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   if (req.method === 'PUT') {
     return await updateData(req, res)
   }
@@ -54,3 +51,5 @@ export default async function (
   res.setHeader('Allow', ['DELETE'])
   res.status(405).end(`Method ${req.method} Not Allowed`)
 }
+
+export default api

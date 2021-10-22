@@ -29,7 +29,7 @@ const post = async (
 }
 
 // this codes are for debug to call firebase store api
-export default async function (
+async function api(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
@@ -38,3 +38,5 @@ export default async function (
   }
   return await get(req, res)
 }
+
+export default api
