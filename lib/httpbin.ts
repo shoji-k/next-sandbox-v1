@@ -7,5 +7,5 @@ type Response = {
 export async function getIp(): Promise<Response> {
   const url = 'https://httpbin.org/ip'
   const res = await fetch(url)
-  return res.json()
+  return res.json() as Promise<Response>
 }
