@@ -25,4 +25,4 @@ jobs:
         timeout-minutes: 30
         with:
           build: yarn build
-          start: yarn dev
+          start: yarn start
