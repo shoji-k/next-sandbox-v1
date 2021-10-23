@@ -29,4 +29,7 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# Cypress
+cypress/videos/top.js.mp4
+
 .vercel
