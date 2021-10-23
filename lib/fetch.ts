@@ -14,7 +14,7 @@ export async function fetchPost(
     method: 'POST',
     body: JSON.stringify(data),
   })
-  return res.json()
+  return res.json() as Promise<{ data: { id: string } }>
 }
 
 export async function fetchPut(
@@ -25,10 +25,9 @@ export async function fetchPut(
     method: 'PUT',
     body: JSON.stringify(data),
   })
-  return res.json()
+  return res.json() as Promise<{ data: { user: user } }>
 }
 
-export async function callDelete(url: string): Promise<{ void }> {
-  const res = await fetch(url, { method: 'DELETE' })
-  return res.json()
+export async function callDelete(url: string) {
+  await fetch(url, { method: 'DELETE' })
 }
