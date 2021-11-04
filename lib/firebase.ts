@@ -1,5 +1,5 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore';
+import { FirebaseApp, getApps, initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -9,8 +9,10 @@ const firebaseConfig = {
   appId: process.env.APP_ID,
 }
 
-const app = !firebase.apps.length
-  ? firebase.initializeApp(firebaseConfig)
-  : firebase.app()
+export const getFirebaseApp = (): FirebaseApp | undefined => {
+  // if (typeof window === "undefined") return; // avoid to run backend
 
-export default app
+  return getApps()[0] || initializeApp(firebaseConfig);
+};
+
+export const getDb = () => getFirestore(getFirebaseApp())
