@@ -6,10 +6,7 @@ import UserForm from '@/components/users/form'
 import UserList from '@/components/users/list'
 import { GetStaticProps } from 'next'
 
-// export default function Home({ users }: { users: user[] }): ReactElement {
-export default function Home(): ReactElement {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const users: user[] = []
+export default function Home({ users }: { users: user[] }): ReactElement {
   const [list, setList] = useState([])
   const [selectedUser, setSelected] = useState({})
 
@@ -47,9 +44,9 @@ export default function Home(): ReactElement {
     setList(newList)
   }
 
-  // useEffect(() => {
-  //   setList(users.map((user) => ({ ...user, deleting: false })))
-  // }, [users])
+  useEffect(() => {
+    setList(users.map((user) => ({ ...user, deleting: false })))
+  }, [users])
 
   return (
     <Layout>
@@ -76,11 +73,11 @@ export default function Home(): ReactElement {
   )
 }
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const users = [] // await load()
-//   return {
-//     props: {
-//       users,
-//     },
-//   }
-// }
+export const getStaticProps: GetStaticProps = async () => {
+  const users = await load()
+  return {
+    props: {
+      users,
+    },
+  }
+}
