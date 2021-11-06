@@ -1,4 +1,16 @@
-import firebase from '@/lib/firebase'
+import { getDb } from '@/lib/firebase'
+import {
+  getFirestore,
+  collection,
+  query,
+  orderBy,
+  limit,
+  getDocs,
+  addDoc,
+  doc,
+  updateDoc,
+  deleteDoc,
+} from 'firebase/firestore'
 
 export type user = {
   id?: string
@@ -9,73 +21,53 @@ export type user = {
   deleting?: boolean
 }
 
-export const load = (): Promise<user[] | string> => {
-  return new Promise((resolve, reject) => {
-    const db = firebase.firestore()
-    db.collection('users')
-      .orderBy('first', 'asc')
-      .limit(10)
-      .get()
-      .then(function (snapshot) {
-        const users = []
-        snapshot.forEach((doc) => {
-          const user = doc.data()
-          users.push({ id: doc.id, ...user })
-        })
-        resolve(users)
-      })
-      .catch(function (e) {
-        console.log(e)
-        reject(e.message)
-      })
-  })
+export const load = async (): Promise<user[]> => {
+  try {
+    const db = getDb()
+    const q = query(collection(db, 'users'), orderBy('first', 'asc'), limit(10))
+    const snapshot = await getDocs(q)
+    const users = []
+    snapshot.forEach((doc) => {
+      const user = doc.data()
+      users.push({ id: doc.id, ...user })
+    })
+    return users
+  } catch (e) {
+    console.log(e)
+    throw e
+  }
 }
 
-export const create = (user: user): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const db = firebase.firestore()
-    db.collection('users')
-      .add(user)
-      .then(function (docRef) {
-        // console.log('Document written with ID: ', docRef.id)
-        resolve(docRef.id)
-      })
-      .catch(function (error) {
-        console.error('Error adding document: ', error)
-        reject(error.message)
-      })
-  })
+export const create = async (user: user): Promise<string> => {
+  try {
+    const db = getDb()
+    const docRef = await addDoc(collection(db, 'users'), user)
+    return docRef.id
+  } catch (e) {
+    console.error('Error adding document: ', e)
+    throw e
+  }
 }
 
-export const update = (user: user): Promise<user> => {
-  console.log('user', user.id)
-  return new Promise((resolve, reject) => {
-    const db = firebase.firestore()
-    db.collection('users')
-      .doc(user.id)
-      .set(user)
-      .then(function () {
-        resolve(user)
-      })
-      .catch(function (error) {
-        console.error('Error updating document: ', error)
-        reject(error.message)
-      })
-  })
+export const update = async (user: user): Promise<user> => {
+  try {
+    const db = getDb()
+    const docRef = doc(db, 'users', user.id)
+    await updateDoc(docRef, user)
+    return user
+  } catch (e) {
+    console.error('Error updating document: ', e)
+    throw e
+  }
 }
 
-export const remove = (id: string): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const db = firebase.firestore()
-    db.collection('users')
-      .doc(id)
-      .delete()
-      .then(function () {
-        resolve(id)
-      })
-      .catch(function (error) {
-        console.error('Error deleting document: ', error)
-        reject(error.message)
-      })
-  })
+export const remove = async (id: string): Promise<string> => {
+  try {
+    const db = getDb()
+    await deleteDoc(doc(db, 'users', id))
+    return id
+  } catch (e) {
+    console.error('Error deleting document: ', e)
+    throw e
+  }
 }
