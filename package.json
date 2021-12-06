@@ -24,13 +24,13 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.18.0",
-    "remark": "^14.0.1",
+    "remark": "^14.0.2",
     "remark-html": "^15.0.0",
     "swr": "^1.0.1"
   },
   "devDependencies": {
     "@types/classnames": "^2.3.1",
-    "@types/node": "^16.11.6",
+    "@types/node": "^16.11.11",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.36",
     "cypress": "^8.7.0",
