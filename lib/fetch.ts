@@ -1,10 +1,4 @@
-import fetch from 'node-fetch'
 import { user } from '@/lib/firebase/users'
-
-export default async function fetchedJson<T>(url: string): Promise<T> {
-  const res = await fetch(url)
-  return res.json() as Promise<T>
-}
 
 export async function fetchPost(
   url: string,
