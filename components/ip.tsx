@@ -1,10 +1,12 @@
 import React, { ReactElement } from 'react'
-import useSWR from 'swr'
-import fetch from '@/lib/fetch'
+import useSWR, { Fetcher } from 'swr'
+
+type IPData = { origin: string }
+const fetcher: Fetcher<IPData> = (url: string) => fetch(url).then(res => res.json())
 
 export default function Ip(): ReactElement {
   const url = 'https://httpbin.org/ip'
-  const { data, error } = useSWR<{ origin: string }>(url, fetch)
+  const { data, error } = useSWR<IPData>(url, fetcher)
 
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
