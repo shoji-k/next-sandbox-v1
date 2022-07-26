@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import { addMinutes, getHours, format, isEqual, addDays } from 'date-fns'
-import { makeStyles } from '@material-ui/core/styles'
-import { Box, Tooltip, Typography } from '@material-ui/core'
-import { Clear, ChangeHistory, RadioButtonUnchecked } from '@material-ui/icons'
+import makeStyles from '@mui/styles/makeStyles';
+import { Box, Tooltip, Typography } from '@mui/material'
+import { Clear, ChangeHistory, RadioButtonUnchecked } from '@mui/icons-material'
 
 const useStyles = makeStyles({
   cell: {

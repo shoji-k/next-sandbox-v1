@@ -1,24 +1,15 @@
-import React, { ReactElement } from 'react'
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-  DocumentInitialProps,
-} from 'next/document'
-import { ServerStyleSheets } from '@material-ui/core/styles'
-import { StylesProviderProps } from '@material-ui/styles/StylesProvider'
+import * as React from 'react'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 import theme from '../src/theme'
-import { RenderPageResult } from 'next/dist/shared/lib/utils'
 
 export default class MyDocument extends Document {
-  render(): ReactElement {
+  render() {
     return (
-      <Html lang="ja">
+      <Html lang="en">
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
+          <link rel="shortcut icon" href="/static/favicon.ico" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -34,10 +25,8 @@ export default class MyDocument extends Document {
 }
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
-// it's compatible with server-side generation (SSG).
-MyDocument.getInitialProps = async (
-  ctx: DocumentContext
-): Promise<DocumentInitialProps> => {
+// it's compatible with static-site generation (SSG).
+MyDocument.getInitialProps = async (ctx) => {
   // Resolution order
   //
   // On the server:
@@ -60,26 +49,10 @@ MyDocument.getInitialProps = async (
   // 3. app.render
   // 4. page.render
 
-  // Render app and page and get the context of the page with collected side effects.
-  const sheets = new ServerStyleSheets()
   const originalRenderPage = ctx.renderPage
 
-  ctx.renderPage = (): RenderPageResult | Promise<RenderPageResult> =>
-    originalRenderPage({
-      enhanceApp:
-        (App) =>
-        (props): React.ReactElement<StylesProviderProps> =>
-          sheets.collect(<App {...props} />),
-    })
-
+  ctx.renderPage = () => originalRenderPage()
   const initialProps = await Document.getInitialProps(ctx)
-
-  return {
-    ...initialProps,
-    // Styles fragment is rendered after the app and page rendering finish.
-    styles: [
-      ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement(),
-    ],
-  }
+  
+  return initialProps
 }

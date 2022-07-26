@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { useForm } from 'react-hook-form'
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert'
+import MuiAlert, { AlertProps } from '@mui/material/Alert'
 import {
   Box,
   Button,
@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
   Snackbar,
-} from '@material-ui/core'
+} from '@mui/material'
 
 function Alert(props: AlertProps): ReactElement {
   return <MuiAlert elevation={6} variant="filled" {...props} />
@@ -108,5 +108,5 @@ export default function Form(): ReactElement {
         </Alert>
       </Snackbar>
     </Box>
-  )
+  );
 }

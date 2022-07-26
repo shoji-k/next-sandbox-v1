@@ -4,8 +4,8 @@ import Head from 'next/head'
 import Router from 'next/router'
 import { AppProps } from 'next/app'
 import NProgress from 'nprogress'
-import { ThemeProvider } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
+import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline'
 import theme from '../src/theme'
 
 Router.events.on('routeChangeStart', (url) => {
@@ -36,11 +36,13 @@ export default function MyApp({
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </StyledEngineProvider>
     </React.Fragment>
-  )
+  );
 }
