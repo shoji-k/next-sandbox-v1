@@ -46,7 +46,7 @@ export default function Form(): ReactElement {
               fullWidth
               required
               error={!!errors.name}
-              helperText={errors.name?.message}
+              helperText={errors.name?.message?.toString()}
               {...register('name', { required: '入力してください' })}
             />
           </Grid>
@@ -59,7 +59,7 @@ export default function Form(): ReactElement {
               fullWidth
               required
               error={!!errors.tel}
-              helperText={errors.tel?.message}
+              helperText={errors.tel?.message?.toString()}
               {...register('tel', { required: '入力してください' })}
             />
           </Grid>
@@ -73,7 +73,7 @@ export default function Form(): ReactElement {
               required
               placeholder="sample@sample.com"
               error={!!errors.email}
-              helperText={errors.email?.message}
+              helperText={errors.email?.message?.toString()}
               {...register('email', {
                 required: '入力してください',
                 pattern: {
@@ -91,7 +91,7 @@ export default function Form(): ReactElement {
               fullWidth
               multiline
               error={!!errors.memo}
-              helperText={errors.memo?.message}
+              helperText={errors.memo?.message?.toString()}
               inputRef={register}
             />
           </Grid>
@@ -108,5 +108,5 @@ export default function Form(): ReactElement {
         </Alert>
       </Snackbar>
     </Box>
-  );
+  )
 }

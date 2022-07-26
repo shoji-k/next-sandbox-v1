@@ -100,7 +100,7 @@ export default function UserForm({
           >
             Name
           </TextLabel>
-          <Alert error={errors['first']?.message} />
+          <Alert error={errors['first']?.message?.toString()} />
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <TextLabel
@@ -111,7 +111,7 @@ export default function UserForm({
           >
             &nbsp;
           </TextLabel>
-          <Alert error={errors['middle']?.message} />
+          <Alert error={errors['middle']?.message?.toString()} />
         </div>
         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <TextLabel
@@ -122,7 +122,7 @@ export default function UserForm({
           >
             &nbsp;
           </TextLabel>
-          <Alert error={errors['last']?.message} />
+          <Alert error={errors['last']?.message?.toString()} />
         </div>
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
