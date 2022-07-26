@@ -1889,16 +1889,24 @@
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.1.0.tgz"
   "version" "3.1.0"
 
+<<<<<<< HEAD
 "cypress@^9.5.1":
   "integrity" "sha512-H7lUWB3Svr44gz1rNnj941xmdsCljXoJa2cDneAltjI9leKLMQLm30x6jLlpQ730tiVtIbW5HdUmBzPzwzfUQg=="
   "resolved" "https://registry.npmjs.org/cypress/-/cypress-9.5.1.tgz"
   "version" "9.5.1"
+=======
+cypress@^10.3.1:
+  version "10.3.1"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-10.3.1.tgz#7fab4ef43481c05a9a17ebe9a0ec860e15b95a19"
+  integrity sha512-As9HrExjAgpgjCnbiQCuPdw5sWKx5HUJcK2EOKziu642akwufr/GUeqL5UnCPYXTyyibvEdWT/pSC2qnGW/e5w==
+>>>>>>> 773348f (Bump cypress from 9.5.1 to 10.3.1)
   dependencies:
     "@cypress/request" "^2.88.10"
     "@cypress/xvfb" "^1.2.4"
     "@types/node" "^14.14.31"
     "@types/sinonjs__fake-timers" "8.1.1"
     "@types/sizzle" "^2.3.2"
+<<<<<<< HEAD
     "arch" "^2.2.0"
     "blob-util" "^2.0.2"
     "bluebird" "^3.7.2"
@@ -1936,6 +1944,45 @@
     "tmp" "~0.2.1"
     "untildify" "^4.0.0"
     "yauzl" "^2.10.0"
+=======
+    arch "^2.2.0"
+    blob-util "^2.0.2"
+    bluebird "^3.7.2"
+    buffer "^5.6.0"
+    cachedir "^2.3.0"
+    chalk "^4.1.0"
+    check-more-types "^2.24.0"
+    cli-cursor "^3.1.0"
+    cli-table3 "~0.6.1"
+    commander "^5.1.0"
+    common-tags "^1.8.0"
+    dayjs "^1.10.4"
+    debug "^4.3.2"
+    enquirer "^2.3.6"
+    eventemitter2 "^6.4.3"
+    execa "4.1.0"
+    executable "^4.1.1"
+    extract-zip "2.0.1"
+    figures "^3.2.0"
+    fs-extra "^9.1.0"
+    getos "^3.2.1"
+    is-ci "^3.0.0"
+    is-installed-globally "~0.4.0"
+    lazy-ass "^1.6.0"
+    listr2 "^3.8.3"
+    lodash "^4.17.21"
+    log-symbols "^4.0.0"
+    minimist "^1.2.6"
+    ospath "^1.2.2"
+    pretty-bytes "^5.6.0"
+    proxy-from-env "1.0.0"
+    request-progress "^3.0.0"
+    semver "^7.3.2"
+    supports-color "^8.1.1"
+    tmp "~0.2.1"
+    untildify "^4.0.0"
+    yauzl "^2.10.0"
+>>>>>>> 773348f (Bump cypress from 9.5.1 to 10.3.1)
 
 "damerau-levenshtein@^1.0.7":
   "integrity" "sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA=="
@@ -3730,10 +3777,17 @@
   dependencies:
     "brace-expansion" "^1.1.7"
 
+<<<<<<< HEAD
 "minimist@^1.1.1", "minimist@^1.2.0", "minimist@^1.2.5", "minimist@^1.2.6":
   "integrity" "sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q=="
   "resolved" "https://registry.npmjs.org/minimist/-/minimist-1.2.6.tgz"
   "version" "1.2.6"
+=======
+minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
+>>>>>>> 773348f (Bump cypress from 9.5.1 to 10.3.1)
 
 "mri@^1.1.0":
   "integrity" "sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA=="
