@@ -1,54 +1,52 @@
 import React, { ReactElement } from 'react'
 import { addMinutes, getHours, format, isEqual, addDays } from 'date-fns'
-import { makeStyles } from '@material-ui/core/styles'
-import { Box, Tooltip, Typography } from '@material-ui/core'
-import { Clear, ChangeHistory, RadioButtonUnchecked } from '@material-ui/icons'
-
-const useStyles = makeStyles({
-  cell: {
-    width: '14.285%',
-    textAlign: 'center',
-  },
-  time: {
-    width: '200px',
-    textAlign: 'center',
-  },
-})
+import { Box, Tooltip, Typography } from '@mui/material'
+import { Clear, ChangeHistory, RadioButtonUnchecked } from '@mui/icons-material'
 
 function HeaderTimeCell({
   children,
 }: {
   children?: React.ReactNode
 }): ReactElement {
-  const classes = useStyles()
   return (
-    <Box className={classes.time} p={2} bgcolor="grey.300" border={1}>
+    <Box
+      sx={{ width: '200px', textAlign: 'center' }}
+      p={2}
+      bgcolor="grey.300"
+      border={1}
+    >
       {children}
     </Box>
   )
 }
 
 function HeaderCell({ children }: { children: React.ReactNode }): ReactElement {
-  const classes = useStyles()
   return (
-    <Box className={classes.cell} p={2} bgcolor="grey.300" border={1}>
+    <Box
+      sx={{ width: '14.285%', textAlign: 'center' }}
+      p={2}
+      bgcolor="grey.300"
+      border={1}
+    >
       {children}
     </Box>
   )
 }
 
 function TimeCell({ children }: { children: React.ReactNode }): ReactElement {
-  const classes = useStyles()
   return (
-    <Box className={classes.time} p={2} bgcolor="grey.100" border={1}>
+    <Box
+      sx={{ width: '200px', textAlign: 'center' }}
+      p={2}
+      bgcolor="grey.100"
+      border={1}
+    >
       {children}
     </Box>
   )
 }
 
 function Cell({ staffs }: { staffs?: string[] }): ReactElement {
-  const classes = useStyles()
-
   const click = (): void => {
     alert('select')
   }
@@ -72,7 +70,7 @@ function Cell({ staffs }: { staffs?: string[] }): ReactElement {
 
   return (
     <Box
-      className={classes.cell}
+      sx={{ width: '14.285%', textAlign: 'center' }}
       p={2}
       m="auto"
       bgcolor="grey.100"
