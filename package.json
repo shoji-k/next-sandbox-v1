@@ -14,7 +14,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.8.4",
-    "@mui/lab": "^5.0.0-alpha.116",
+    "@mui/lab": "^5.0.0-alpha.119",
     "@mui/material": "^5.9.2",
     "classnames": "^2.3.2",
     "date-fns": "^2.29.3",
