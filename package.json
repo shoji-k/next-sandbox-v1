@@ -37,7 +37,7 @@
     "cypress": "^12.8.1",
     "eslint": "^8.34.0",
     "eslint-config-next": "^13.1.6",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-cypress": "^2.12.1",
     "postcss-preset-env": "^6.7.1",
     "prettier": "^2.8.3",
