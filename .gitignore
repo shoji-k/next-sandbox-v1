@@ -30,7 +30,8 @@ yarn-error.log*
 .env.production.local
 
 # Cypress
-cypress/videos/top.js.mp4
+cypress/videos/*
+cypress/screenshots/*
 
 .vercel
 tsconfig.tsbuildinfo
